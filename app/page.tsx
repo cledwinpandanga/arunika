@@ -13,7 +13,6 @@ export default function Home() {
           priority
           className="object-cover -z-10"
         />
-
         <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-20 p-8">
           <div className="w-full h-full flex flex-col justify-start">
             <p className="text-white text-6xl lg:text-8xl mt-40 ">
@@ -34,6 +33,14 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <Image
+          src="/logo-arunika.png"
+          alt="Logo Arunika"
+          height={200}
+          width={200}
+          priority
+          className="object-cover -z-10 size-10 lg:size-20 absolute top-10 left-8 rounded-full"
+        />
       </section>
     );
   };
@@ -228,13 +235,25 @@ export default function Home() {
               Contact Me
             </Link>
           </div>
-          <div className="flex flex-col items-start gap-2">
-            <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
-              www.ruangarunika.id
-            </p>
-            <p className="text-white text-2xl text-end lg:text-start">
-              +62 821-4706-0726
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-start justify-start items-end gap-4">
+            <div>
+              <Image
+                src="/logo-arunika.png"
+                alt="Logo Arunika"
+                height={200}
+                width={200}
+                priority
+                className="object-cover size-20 rounded-full"
+              />
+            </div>
+            <div>
+              <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
+                www.ruangarunika.id
+              </p>
+              <p className="text-white text-2xl text-end lg:text-start">
+                +62 821-4706-0726
+              </p>
+            </div>
           </div>
         </div>
         <div className="w-full hidden lg:block">
