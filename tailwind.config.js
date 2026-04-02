@@ -7,9 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: "#ffffff",
-        secondary: "#000000",
+      animation: {
+        typewriter: "typewriter 2s steps(11) forwards",
+      },
+      keyframes: {
+        typewriter: {
+          to: {
+            left: "100%",
+          },
+        },
       },
     },
   },

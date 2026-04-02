@@ -1,11 +1,23 @@
 "use client";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+
   const renderHeroSection = () => {
     return (
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden text-white">
         <Image
           src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Hero background"
@@ -14,14 +26,14 @@ export default function Home() {
           className="object-cover -z-10"
         />
         <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-20 p-8">
-          <div className="w-full h-full flex flex-col justify-start">
-            <p className="text-white text-6xl lg:text-8xl mt-40 ">
+          <div className="w-full h-full flex flex-col justify-start lg:items-end">
+            <p className="text-6xl lg:text-8xl mt-40 ">
               Alan <br />
               Anapaku
             </p>
           </div>
           <div className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-end items-end lg:items-start pb-0 lg:pb-40">
-            <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
+            <p className="text-2xl lg:text-4xl text-end lg:text-start">
               Landscape & Travel <br />
               Photographer
             </p>
@@ -47,7 +59,7 @@ export default function Home() {
 
   const renderAboutSection = () => {
     return (
-      <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col lg:flex-row gap-8 items-center">
+      <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col lg:flex-row gap-8 items-center bg-stone-800 text-white">
         <div className="w-full h-full flex flex-col justify-center gap-20">
           <p className="text-4xl lg:text-6xl">Hi, it's Alan</p>
           <p className="text-4xl">
@@ -143,7 +155,7 @@ export default function Home() {
     ];
 
     return (
-      <div className="w-full min-h-screen py-40 px-8 flex flex-col justify-center bg-black text-white">
+      <div className="w-full min-h-screen py-40 px-8 flex flex-col justify-center bg-stone-800 text-white">
         <p className="text-4xl lg:text-6xl text-center font-bold">
           The Summer Exhibit
         </p>
@@ -223,7 +235,7 @@ export default function Home() {
   const renderFooter = () => {
     return (
       <div className="w-full h-220 bg-white flex flex-col lg:flex-row">
-        <div className="w-full h-full bg-black flex flex-col justify-center gap-20 p-8">
+        <div className="w-full h-full bg-stone-800 flex flex-col justify-center gap-20 p-8">
           <div className="flex flex-col gap-4 items-start">
             <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
               Feature My Work
@@ -269,8 +281,29 @@ export default function Home() {
     );
   };
 
-  const renderMainSection = () => {
+  const renderLoader = () => {
+    const words = [{ text: "Ruang" }, { text: "Arunika" }];
     return (
+      <div className="w-full h-screen bg-white">
+        <div className="w-full flex h-full justify-center items-center gap-4">
+          <Image
+            src="/logo-arunika.png"
+            alt="Logo Arunika"
+            height={200}
+            width={200}
+            priority
+            className="rounded-full size-20 animate-bounce"
+          />
+          <TypewriterEffectSmooth words={words} />
+        </div>
+      </div>
+    );
+  };
+
+  const renderMainSection = () => {
+    return loading ? (
+      renderLoader()
+    ) : (
       <div className="w-full h-full">
         {renderHeroSection()}
         {renderAboutSection()}
