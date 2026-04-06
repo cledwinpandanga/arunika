@@ -3,6 +3,7 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,13 +27,23 @@ export default function Home() {
           className="object-cover -z-10"
         />
         <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-20 p-8">
-          <div className="w-full h-full flex flex-col justify-start lg:items-end">
-            <p className="text-6xl lg:text-8xl mt-40 ">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="w-full h-full flex flex-col justify-start lg:items-end"
+          >
+            <p className="text-6xl lg:text-8xl mt-40">
               Alan <br />
               Anapaku
             </p>
-          </div>
-          <div className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-end items-end lg:items-start pb-0 lg:pb-40">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-end items-end lg:items-start pb-0 lg:pb-40"
+          >
             <p className="text-2xl lg:text-4xl text-end lg:text-start">
               Landscape & Travel <br />
               Photographer
@@ -43,7 +54,7 @@ export default function Home() {
             >
               Book a Call
             </Link>
-          </div>
+          </motion.div>
         </div>
         <Image
           src="/logo-arunika.png"
@@ -51,7 +62,7 @@ export default function Home() {
           height={200}
           width={200}
           priority
-          className="object-cover -z-10 size-10 lg:size-20 absolute top-10 left-8 rounded-full"
+          className="object-cover z-10 size-10 lg:size-20 absolute top-10 left-8 rounded-full"
         />
       </section>
     );
@@ -60,7 +71,13 @@ export default function Home() {
   const renderAboutSection = () => {
     return (
       <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col lg:flex-row gap-8 items-center bg-stone-800 text-white">
-        <div className="w-full h-full flex flex-col justify-center gap-20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full h-full flex flex-col justify-center gap-20"
+        >
           <p className="text-4xl lg:text-6xl">Hi, it's Alan</p>
           <p className="text-4xl">
             I'm a landscape and travel photographer, specializing in capturing
@@ -70,7 +87,7 @@ export default function Home() {
             I've traveled extensively, photographing the world's most
             breathtaking views.
           </p>
-        </div>
+        </motion.div>
         <div className="w-full h-full flex flex-col justify-center">
           <Image
             width={1000}
@@ -108,10 +125,22 @@ export default function Home() {
 
     return (
       <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col justify-center bg-white text-black">
-        <p className="text-4xl lg:text-6xl text-center font-bold">
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl lg:text-6xl text-center font-bold"
+        >
           The Summer Exhibit
-        </p>
-        <div className="w-full h-full flex flex-col lg:flex-row justify-center gap-10 mt-20">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full h-full flex flex-col lg:flex-row justify-center gap-10 mt-20"
+        >
           {images.map((eachImage) => {
             return (
               <div className="flex flex-col gap-2" key={eachImage.key}>
@@ -127,7 +156,7 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     );
   };
@@ -156,11 +185,22 @@ export default function Home() {
 
     return (
       <div className="w-full min-h-screen py-40 px-8 flex flex-col justify-center bg-stone-800 text-white">
-        <p className="text-4xl lg:text-6xl text-center font-bold">
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl lg:text-6xl text-center font-bold"
+        >
           The Summer Exhibit
-        </p>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-20">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-20"
+        >
           {images.map((eachImage) => (
             <div
               key={eachImage.key}
@@ -179,7 +219,7 @@ export default function Home() {
               <p className="text-xl">{eachImage.subtitle}</p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     );
   };
@@ -208,10 +248,22 @@ export default function Home() {
 
     return (
       <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col justify-center bg-white text-black">
-        <p className="text-4xl lg:text-6xl text-center font-bold">
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl lg:text-6xl text-center font-bold"
+        >
           The Summer Exhibit
-        </p>
-        <div className="w-full h-full flex flex-col lg:flex-row justify-center gap-10 mt-20">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full h-full flex flex-col lg:flex-row justify-center gap-10 mt-20"
+        >
           {images.map((eachImage) => {
             return (
               <div className="flex flex-col gap-2" key={eachImage.key}>
@@ -227,7 +279,7 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     );
   };
@@ -236,7 +288,13 @@ export default function Home() {
     return (
       <div className="w-full h-220 bg-white flex flex-col lg:flex-row">
         <div className="w-full h-full bg-stone-800 flex flex-col justify-center gap-20 p-8">
-          <div className="flex flex-col gap-4 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex flex-col gap-4 items-start"
+          >
             <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
               Feature My Work
             </p>
@@ -246,8 +304,14 @@ export default function Home() {
             >
               Contact Me
             </Link>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-start justify-start items-end gap-4">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex flex-col lg:flex-row lg:items-start lg:justify-start justify-start items-end gap-4"
+          >
             <div>
               <Image
                 src="/logo-arunika.png"
@@ -266,7 +330,7 @@ export default function Home() {
                 +62 821-4706-0726
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className="w-full hidden lg:block">
           <Image
