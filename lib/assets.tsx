@@ -37,7 +37,7 @@ export const hijau: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/Su1QQAqJUvELWyb17",
+    coordinate: "https://maps.app.goo.gl/EETugyRdE8uEqJBu5",
     src: "/hijau4.jpg",
   },
   {
@@ -69,7 +69,7 @@ export const hijau: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/Su1QQAqJUvELWyb17",
+    coordinate: "https://maps.app.goo.gl/oWdhrcwmhgJF2RAt8",
     src: "/hijau8.jpg",
   },
   {
@@ -77,7 +77,7 @@ export const hijau: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/Su1QQAqJUvELWyb17",
+    coordinate: "https://maps.app.goo.gl/EETugyRdE8uEqJBu5",
     src: "/hijau9.jpg",
   },
 ];
@@ -115,8 +115,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/MBatX9mwaiU44i8z6",
     src: "/orange1.jpg",
   },
   {
@@ -124,8 +123,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/MBatX9mwaiU44i8z6",
     src: "/orange2.jpg",
   },
   {
@@ -133,8 +131,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/MBatX9mwaiU44i8z6",
     src: "/orange3.jpg",
   },
   {
@@ -142,8 +139,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/AfbzsJyZwCnxzVdv7",
     src: "/orange4.jpg",
   },
   {
@@ -151,8 +147,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/AfbzsJyZwCnxzVdv7",
     src: "/orange5.jpg",
   },
   {
@@ -160,8 +155,7 @@ export const orange: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/AfbzsJyZwCnxzVdv7",
     src: "/orange6.jpg",
   },
 ];
