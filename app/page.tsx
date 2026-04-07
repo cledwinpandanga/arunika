@@ -56,6 +56,8 @@ export default function Home() {
             <Link
               href={`https://wa.me/${phone}?text=${message}`}
               target="_blank"
+              className="text-white border rounded-full p-4 hover:bg-white/20"
+              rel="noopener"
             >
               Book a Call
             </Link>
@@ -130,7 +132,13 @@ export default function Home() {
           className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10 lg:mt-20"
         >
           {hijau.map((eachImage) => (
-            <div className="flex flex-col gap-2" key={eachImage.key}>
+            <Link
+              href={eachImage.coordinate}
+              className="flex flex-col gap-2"
+              key={eachImage.key}
+              rel="noopener"
+              target="blank"
+            >
               <div className="w-full h-100 lg:h-125 overflow-hidden relative">
                 <Image
                   src={eachImage.src}
@@ -142,7 +150,7 @@ export default function Home() {
               </div>
               <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
               <p className="text-xl">{eachImage.subtitle}</p>
-            </div>
+            </Link>
           ))}
         </motion.div>
       </div>
@@ -169,7 +177,13 @@ export default function Home() {
           className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 lg:mt-20"
         >
           {orange.map((eachImage) => (
-            <div key={eachImage.key} className="w-full flex flex-col">
+            <Link
+              href={eachImage.coordinate}
+              key={eachImage.key}
+              className="w-full flex flex-col"
+              rel="noopener"
+              target="blank"
+            >
               <div className="relative w-full h-125 lg:h-160">
                 <Image
                   fill
@@ -183,7 +197,7 @@ export default function Home() {
                 {eachImage.text}
               </p>
               <p className="text-xl">{eachImage.subtitle}</p>
-            </div>
+            </Link>
           ))}
         </motion.div>
       </div>
@@ -199,6 +213,7 @@ export default function Home() {
         subtitle: eachAction.subtitle,
         text: eachAction.text,
         blurDataUrl: eachAction.blurDataUrl,
+        coordinate: eachAction.coordinate,
       });
     });
     biru.forEach((eachBiru) => {
@@ -224,9 +239,12 @@ export default function Home() {
           className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-6 mt-10 lg:mt-20"
         >
           {combinedPic.map((eachImage) => (
-            <div
+            <Link
               className="flex flex-col gap-2 col-span-1 drop-shadow-stone-300 drop-shadow-2xl"
               key={eachImage.key}
+              href={eachImage.coordinate}
+              rel="noopener"
+              target="blank"
             >
               <div className="w-full h-100 lg:h-125 overflow-hidden relative">
                 <Image
@@ -239,7 +257,7 @@ export default function Home() {
               </div>
               <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
               <p className="text-xl">{eachImage.subtitle}</p>
-            </div>
+            </Link>
           ))}
         </motion.div>
       </div>
@@ -263,6 +281,8 @@ export default function Home() {
             <Link
               href={`https://wa.me/${phone}?text=${message}`}
               target="_blank"
+              className="text-white border rounded-full p-4 hover:bg-white/20"
+              rel="noopener"
             >
               Book a Call
             </Link>
