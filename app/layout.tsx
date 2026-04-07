@@ -27,12 +27,15 @@ export default function RootLayout({
         geist.variable,
       )}
     >
-      <body
-        className="min-h-full flex flex-col bg-center bg-cover"
-        style={{ backgroundImage: `url(${orange[2].src})` }}
-      >
-        {children}
-      </body>
+      <title>Ruang Arunika</title>
+      <main>
+        <body
+          className="min-h-full flex flex-col bg-center bg-cover"
+          style={{ backgroundImage: `url(${orange[2].src})` }}
+        >
+          {children}
+        </body>
+      </main>
     </html>
   );
 }

@@ -66,6 +66,7 @@ export default function Home() {
           height={200}
           width={200}
           priority
+          fetchPriority="high"
           className="object-cover z-10 size-10 lg:size-20 absolute top-10 left-8 rounded-full"
         />
       </section>
@@ -294,6 +295,7 @@ export default function Home() {
             width={1000}
             height={1000}
             src="/footer.jpg"
+            fetchPriority="high"
             alt="About background"
             className="object-cover w-full h-220"
           />
@@ -313,6 +315,7 @@ export default function Home() {
             height={200}
             width={200}
             priority
+            fetchPriority="high"
             className="rounded-full size-20 animate-bounce"
           />
           <TypewriterEffectSmooth words={words} />
