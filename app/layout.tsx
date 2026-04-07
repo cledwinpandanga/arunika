@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Space_Grotesk, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { orange } from "@/lib/assets";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -28,14 +27,9 @@ export default function RootLayout({
       )}
     >
       <title>Ruang Arunika</title>
-      <main>
-        <body
-          className="min-h-full flex flex-col bg-center bg-cover"
-          style={{ backgroundImage: `url(${orange[2].src})` }}
-        >
-          {children}
-        </body>
-      </main>
+      <body className="min-h-full flex flex-col">
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

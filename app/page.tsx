@@ -125,7 +125,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-4 mt-20"
         >
           {hijau.map((eachImage) => (
@@ -166,7 +166,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-20"
         >
           {orange.map((eachImage) => (
@@ -215,7 +215,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-4 mt-20"
         >
           {combinedPic.map((eachImage) => {
