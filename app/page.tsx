@@ -111,33 +111,31 @@ export default function Home() {
 
   const renderFirstPortfolio = () => {
     return (
-      <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col justify-center bg-white text-black">
+      <div className="w-full h-full min-h-screen relative py-20 lg:py-40 px-8 flex flex-col justify-center bg-white text-black">
         <motion.p
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1 }}
           className="text-4xl lg:text-6xl text-center font-bold text-stone-700"
         >
           The Solitary Soul
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-4 mt-20"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10 lg:mt-20"
         >
           {hijau.map((eachImage) => (
-            <div
-              className="flex flex-col gap-2 col-span-1 drop-shadow-stone-300 drop-shadow-2xl"
-              key={eachImage.key}
-            >
-              <div className="w-full h-full min-h-120 overflow-hidden relative">
+            <div className="flex flex-col gap-2" key={eachImage.key}>
+              <div className="w-full h-100 lg:h-125 overflow-hidden relative">
                 <Image
                   src={eachImage.src}
-                  alt="About background"
+                  alt={eachImage.text}
                   fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
               </div>
@@ -152,33 +150,37 @@ export default function Home() {
 
   const renderSecondPortfolio = () => {
     return (
-      <div className="w-full min-h-screen py-40 px-8 flex flex-col justify-center bg-stone-800 text-white">
+      <div className="w-full min-h-screen py-20 lg:py-40 px-8 flex flex-col justify-center bg-stone-800 text-white">
         <motion.p
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1 }}
           className="text-4xl lg:text-6xl text-center font-bold"
         >
           The Shared Chapter
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-20"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 lg:mt-20"
         >
           {orange.map((eachImage) => (
-            <div key={eachImage.key} className={`w-full min-h-160 `}>
-              <Image
-                width={1000}
-                height={1000}
-                src={eachImage.src}
-                alt="About background"
-                className="object-cover h-160 w-full"
-              />
-              <p className="text-2xl font-bold mt-10">{eachImage.text}</p>
+            <div key={eachImage.key} className="w-full flex flex-col">
+              <div className="relative w-full h-125 lg:h-160">
+                <Image
+                  fill
+                  src={eachImage.src}
+                  alt={eachImage.text}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-2xl font-bold mt-6 lg:mt-10">
+                {eachImage.text}
+              </p>
               <p className="text-xl">{eachImage.subtitle}</p>
             </div>
           ))}
@@ -200,43 +202,43 @@ export default function Home() {
     biru.forEach((eachBiru) => {
       combinedPic.push(eachBiru);
     });
+
     return (
-      <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col justify-center bg-white text-black">
+      <div className="w-full h-full min-h-screen relative py-20 lg:py-40 px-8 flex flex-col justify-center bg-white text-black">
         <motion.p
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1 }}
           className="text-4xl lg:text-6xl text-center font-bold"
         >
           The Grand Setting
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-4 mt-20"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.5 }}
+          className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-6 mt-10 lg:mt-20"
         >
-          {combinedPic.map((eachImage) => {
-            return (
-              <div
-                className="flex flex-col gap-2 col-span-1 drop-shadow-stone-300 drop-shadow-2xl"
-                key={eachImage.key}
-              >
-                <div className="w-full h-full min-h-120 overflow-hidden relative">
-                  <Image
-                    src={eachImage.src}
-                    alt="About background"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
-                <p className="text-xl">{eachImage.subtitle}</p>
+          {combinedPic.map((eachImage) => (
+            <div
+              className="flex flex-col gap-2 col-span-1 drop-shadow-stone-300 drop-shadow-2xl"
+              key={eachImage.key}
+            >
+              <div className="w-full h-100 lg:h-125 overflow-hidden relative">
+                <Image
+                  src={eachImage.src}
+                  alt={eachImage.text}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
               </div>
-            );
-          })}
+              <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
+              <p className="text-xl">{eachImage.subtitle}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
     );
@@ -257,10 +259,11 @@ export default function Home() {
               Feature My Work
             </p>
             <Link
-              href="/"
-              className="px-8 py-2 border-white rounded-full border hover:bg-white w-full lg:w-1/3 text-center hover:text-black text-white"
+              target="blank"
+              href={`https://api.whatsapp.com/send?phone=+6282147060726?text="Alan lau"`}
+              className="px-8 py-2 border-white rounded-full border hover:bg-white/20 text-white"
             >
-              Contact Me
+              Book a Call
             </Link>
           </motion.div>
           <motion.div
