@@ -27,12 +27,12 @@ export default function Home() {
           priority
           className="object-cover object-center -z-10"
         />
-        <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-20 p-8">
+        <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-10 p-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full flex flex-col justify-start lg:items-end"
+            className="w-full h-full flex flex-col justify-start lg:items-center"
           >
             <p className="text-6xl lg:text-8xl mt-40">
               Ruang <br />
@@ -43,9 +43,9 @@ export default function Home() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-end items-end lg:items-start pb-0 lg:pb-40"
+            className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-center items-end lg:items-start pb-0"
           >
-            <p className="text-2xl lg:text-4xl text-end lg:text-start">
+            <p className="text-2xl lg:text-4xl text-end lg:text-start pr-20">
               {`"Photography is an itch that won't go away. No matter how much you
               scratch it."`}
               <br />
@@ -89,7 +89,13 @@ export default function Home() {
             into timeless stories."
           </p>
         </motion.div>
-        <div className="w-full h-full flex flex-col justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="w-full h-full flex flex-col justify-center"
+        >
           <Image
             width={1000}
             height={1000}
@@ -97,7 +103,7 @@ export default function Home() {
             alt="About background"
             className="object-cover w-full max-h-1/3"
           />
-        </div>
+        </motion.div>
       </div>
     );
   };
