@@ -8,6 +8,8 @@ import { biru, orange, hijau, action, ImageProps } from "@/lib/assets";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
+  const phone = "6282147060726";
+  const message = encodeURIComponent("Hi Admin, saya mau booking nih!");
 
   useEffect(() => {
     setLoading(true);
@@ -52,9 +54,8 @@ export default function Home() {
               {`~ Dara McGrath`}
             </p>
             <Link
-              target="blank"
-              href={`https://api.whatsapp.com/send?phone=+6282147060726?text="Alan lau"`}
-              className="px-8 py-2 border-white rounded-full border hover:bg-white/20"
+              href={`https://wa.me/${phone}?text=${message}`}
+              target="_blank"
             >
               Book a Call
             </Link>
@@ -197,6 +198,7 @@ export default function Home() {
         src: eachAction.src,
         subtitle: eachAction.subtitle,
         text: eachAction.text,
+        blurDataUrl: eachAction.blurDataUrl,
       });
     });
     biru.forEach((eachBiru) => {
@@ -259,9 +261,8 @@ export default function Home() {
               Feature My Work
             </p>
             <Link
-              target="blank"
-              href={`https://api.whatsapp.com/send?phone=+6282147060726?text="Alan lau"`}
-              className="px-8 py-2 border-white rounded-full border hover:bg-white/20 text-white"
+              href={`https://wa.me/${phone}?text=${message}`}
+              target="_blank"
             >
               Book a Call
             </Link>
