@@ -116,6 +116,8 @@ export default function Home() {
           height={800}
           src={"/orange1.jpg"}
           alt=""
+          fetchPriority="high"
+          loading="lazy"
           className="lg:block lg:absolute -top-13.5 lg:right-0 h-140 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-140 "
         />
         <div className="lg:w-1/2 2/3 h-full my-auto text-wrap break-all flex flex-col items-center lg:items-start">
