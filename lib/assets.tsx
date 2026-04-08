@@ -82,33 +82,6 @@ export const hijau: ImageProps[] = [
   },
 ];
 
-export const biru: ImageProps[] = [
-  {
-    key: 1,
-    text: "",
-    subtitle: "",
-    blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/e73vMvstv3oqn5ub8",
-    src: "/biru2.jpg",
-  },
-  {
-    key: 2,
-    text: "",
-    subtitle: "",
-    blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/e73vMvstv3oqn5ub8",
-    src: "/biru3.jpg",
-  },
-  {
-    key: 3,
-    text: "",
-    subtitle: "",
-    blurDataUrl: "",
-    coordinate: "https://maps.app.goo.gl/e73vMvstv3oqn5ub8",
-    src: "/biru1.jpg",
-  },
-];
-
 export const orange: ImageProps[] = [
   {
     key: 1,
@@ -166,8 +139,7 @@ export const action: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/cCM7uCHSuYe4ysRe9",
     src: "/action1.jpg",
   },
   // {
@@ -190,8 +162,7 @@ export const action: ImageProps[] = [
     text: "",
     subtitle: "",
     blurDataUrl: "",
-    coordinate:
-      "https://www.google.com/maps/place/Hutan+Cemara+Laipori/@-9.620234,120.4309891,14z/data=!4m6!3m5!1s0x2c4c930bd88ba68f:0xbb37747d397887df!8m2!3d-9.6280164!4d120.4617066!16s%2Fg%2F11fkq89tr3?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D",
+    coordinate: "https://maps.app.goo.gl/uFC84BHGKM8DTcky9",
     src: "/action4.jpg",
   },
   // {
@@ -200,4 +171,31 @@ export const action: ImageProps[] = [
   //   subtitle: "",
   // blurDataUrl:"",
   // },
+];
+
+export const biru: ImageProps[] = [
+  {
+    key: 1,
+    text: "",
+    subtitle: "",
+    blurDataUrl: "",
+    coordinate: "https://maps.app.goo.gl/e73vMvstv3oqn5ub8",
+    src: "/biru2.jpg",
+  },
+  {
+    key: 2,
+    text: "",
+    subtitle: "",
+    blurDataUrl: "",
+    coordinate: "https://maps.app.goo.gl/AfbzsJyZwCnxzVdv7",
+    src: "/biru3.jpg",
+  },
+  {
+    key: 3,
+    text: "",
+    subtitle: "",
+    blurDataUrl: "",
+    coordinate: "https://maps.app.goo.gl/uFC84BHGKM8DTcky9",
+    src: "/biru1.jpg",
+  },
 ];
