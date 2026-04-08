@@ -203,54 +203,78 @@ export default function Home() {
           <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
             {firstGrid.map((eachImage) => {
               return (
-                <Image
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
                   key={eachImage.key}
-                  width={800}
-                  height={800}
-                  src={eachImage.src}
-                  alt={eachImage.src}
-                  className="w-full lg:w-120 h-auto"
-                />
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
               );
             })}
           </div>
           <div className="flex flex-col gap-4 col-span-1">
             {secondGrid.map((eachImage) => {
               return (
-                <Image
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
                   key={eachImage.key}
-                  width={800}
-                  height={800}
-                  src={eachImage.src}
-                  alt={eachImage.src}
-                  className="w-full lg:w-120 h-auto"
-                />
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
               );
             })}
           </div>
           <div className="flex flex-col gap-4 col-span-1">
             {thirdGrid.map((eachImage) => {
               return (
-                <Image
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
                   key={eachImage.key}
-                  width={800}
-                  height={800}
-                  src={eachImage.src}
-                  alt={eachImage.src}
-                  className="w-full lg:w-120 h-auto"
-                />
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
               );
             })}
             {fourthGrid.map((eachImage) => {
               return (
-                <Image
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
                   key={eachImage.key}
-                  width={800}
-                  height={800}
-                  src={eachImage.src}
-                  alt={eachImage.src}
-                  className="w-full lg:w-120 h-fit"
-                />
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-fit"
+                  />
+                </Link>
               );
             })}
           </div>
