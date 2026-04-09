@@ -1,363 +1,516 @@
 "use client";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+
+import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
+import {
+  Navbar,
+  NavBody,
+  NavbarLogo,
+  NavItems,
+  NavbarButton,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
+import { Button } from "@/components/ui/stateful-button";
+import { action, biru, hijau, orange } from "@/lib/assets";
+import { toCurrency } from "@/lib/utils";
+import { IconBrandInstagram } from "@tabler/icons-react";
+import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { biru, orange, hijau, action, ImageProps } from "@/lib/assets";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
+interface EmailProps {
+  name: string;
+  email: string;
+  text: string;
+}
 export default function Home() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const phone = "6282147060726";
-  const message = encodeURIComponent("Hi Admin, saya mau booking nih!");
+  const [email, setEmail] = useState<EmailProps>({
+    email: "",
+    text: "",
+    name: "",
+  });
 
-  useEffect(() => {
-    setLoading(true);
+  const handleUpdateEmail =
+    (type: "email" | "text" | "name") =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
 
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
-  }, []);
+      setEmail((prev: any) => ({
+        ...prev,
+        [type]: value,
+      }));
+    };
 
-  const renderHeroSection = () => {
+  const handleSendEmail = () => {
+    toast.success("Email sent.");
+    setEmail({ name: "", email: "", text: "" });
+  };
+
+  const renderNavbar = () => {
+    const navItems = [
+      {
+        name: "Home",
+        link: "#home",
+      },
+      {
+        name: "Features",
+        link: "#features",
+      },
+      {
+        name: "Pricing",
+        link: "#pricing",
+      },
+      {
+        name: "Contact",
+        link: "#contact",
+      },
+      {
+        name: "About",
+        link: "#about",
+      },
+    ];
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     return (
-      <section className="relative w-full h-screen overflow-hidden text-white bg-black/20">
-        <Image
-          src={hijau[1].src}
-          alt="Hero background"
-          fill
-          priority
-          className="object-cover object-center -z-10"
-        />
-        <div className="w-full h-full flex flex-col lg:flex-row gap-8 lg:gap-10 p-8">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full flex flex-col justify-start lg:items-center"
-          >
-            <p className="text-6xl lg:text-8xl mt-40">
-              Ruang <br />
-              Arunika
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="w-full h-full flex flex-col gap-6 lg:gap-20 justify-start lg:justify-center items-end lg:items-start pb-0"
-          >
-            <p className="text-2xl lg:text-4xl text-end lg:text-start pr-20">
-              {`"Photography is an itch that won't go away. No matter how much you
-              scratch it."`}
-              <br />
-              {`~ Dara McGrath`}
-            </p>
-            <Link
-              href={`https://wa.me/${phone}?text=${message}`}
-              target="_blank"
-              className="text-white border rounded-full p-4 hover:bg-white/20"
+      <div className="fixed w-full z-10">
+        <Navbar>
+          <NavBody>
+            <NavbarLogo />
+            <NavItems items={navItems} />
+            <NavbarButton
+              variant="primary"
+              href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
+              target="blank"
               rel="noopener"
             >
-              Book a Call
-            </Link>
-          </motion.div>
-        </div>
+              Book a call
+            </NavbarButton>
+          </NavBody>
+          <MobileNav>
+            <MobileNavHeader>
+              <NavbarLogo />
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              />
+            </MobileNavHeader>
+
+            <MobileNavMenu
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            >
+              {navItems.map((item, idx) => (
+                <a
+                  key={`mobile-link-${idx}`}
+                  href={item.link}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="relative text-neutral-600 dark:text-neutral-300"
+                >
+                  <span className="block">{item.name}</span>
+                </a>
+              ))}
+              <div className="flex w-full flex-col gap-4">
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="primary"
+                  className="w-full"
+                  href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
+                  target="blank"
+                  rel="noopener"
+                >
+                  Book a call
+                </NavbarButton>
+              </div>
+            </MobileNavMenu>
+          </MobileNav>
+        </Navbar>
+      </div>
+    );
+  };
+
+  const renderHero = () => {
+    return (
+      <div
+        className="w-full min-h-[calc(100vh-54px)] h-full flex flex-col gap-4 lg:flex-row relative"
+        id="home"
+      >
         <Image
-          src="/logo-arunika.png"
-          alt="Logo Arunika"
-          height={200}
-          width={200}
-          priority
+          width={800}
+          height={800}
+          src={"/orange1.jpg"}
+          alt=""
           fetchPriority="high"
-          className="object-cover z-10 size-10 lg:size-20 absolute top-10 left-8 rounded-full"
+          loading="lazy"
+          className="lg:block lg:absolute -top-13.5 lg:right-0 h-140 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-140 "
         />
-      </section>
-    );
-  };
-
-  const renderAboutSection = () => {
-    return (
-      <div className="w-full h-full min-h-screen relative py-40 px-8 flex flex-col lg:flex-row gap-8 items-center bg-stone-800 text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="w-full h-full flex flex-col justify-center gap-20"
-        >
-          <p className="text-4xl">
-            "Ruang Arunika is a creative collective and entity centered on
-            Visual Storytelling. We go beyond simply capturing images; we weave
-            narratives through visual elements, transforming fleeting moments
-            into timeless stories."
+        <div className="lg:w-1/2 2/3 h-full my-auto text-wrap break-all flex flex-col items-center lg:items-start">
+          <h1 className="text-7xl lg:text-8xl font-bold font-playfair">
+            Ruang
+          </h1>
+          <p className="text-7xl lg:text-8xl font-bold font-playfair">
+            Arunika
           </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="w-full h-full flex flex-col justify-center"
-        >
+          <p className="text-2xl font-semibold mt-8 font-playfair">
+            East Sumba, Indonesia
+          </p>
+          <Link
+            href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full"
+          >
+            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-1/2">
+              CONTACT US
+            </Button>
+          </Link>
+        </div>
+        <div className="lg:w-1/2 1/3 h-full" />
+      </div>
+    );
+  };
+
+  const renderAbout = () => {
+    return (
+      <div
+        className="w-full min-h-[80dvh] h-full flex flex-col lg:flex-row gap-20 lg:gap-0 lg:items-center"
+        id="about"
+      >
+        <div className="w-full lg:w-1/2 h-full">
           <Image
-            width={1000}
-            height={1000}
-            src={hijau[6].src}
-            alt="About background"
-            className="object-cover w-full max-h-1/3"
+            width={800}
+            height={800}
+            src={"/orange3.jpg"}
+            alt=""
+            className="w-full lg:w-110 h-full lg:h-160"
           />
-        </motion.div>
+        </div>
+        <div className="w-full lg:w-1/2 h-full flex flex-col items-center lg:items-start lg:justify-center">
+          <h1 className="text-6xl font-bold font-playfair">About Us</h1>
+          <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
+          <p className="text-2xl mt-8 font-playfair text-center">
+            "Photography is an itch that won't go away. No matter how much you
+            scratch it." <br />~ Dara McGrath
+          </p>
+          <p className="text-lg mt-8 lg:text-justify">
+            We specialize in creating stunning visuals that resonate emotionally
+            and creatively. Whether it's through the lens of a camera or the
+            framing of a cinematic shot. We strive to bring authenticity and
+            artistry to every project.
+          </p>
+          <Link href="#features" className="w-full">
+            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
+              View Our Ideas
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   };
 
-  const renderFirstPortfolio = () => {
+  const renderPortfolio = () => {
+    const firstGrid = hijau
+      .filter((eachImg) => eachImg.key < 6)
+      .map((eachImage) => eachImage);
+
+    const secondGrid = orange.map((eachImage) => eachImage);
+    const thirdGrid = biru.map((eachImage) => eachImage);
+    const fourthGrid = action
+      .filter((eachImg) => eachImg.key <= 2)
+      .map((eachImage) => eachImage);
+
     return (
-      <div className="w-full h-full min-h-screen relative py-20 lg:py-40 px-8 flex flex-col justify-center bg-white text-black">
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 1 }}
-          className="text-4xl lg:text-6xl text-center font-bold text-stone-700"
-        >
-          The Solitary Soul
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10 lg:mt-20"
-        >
-          {hijau.map((eachImage) => (
-            <Link
-              href={eachImage.coordinate}
-              className="flex flex-col gap-2"
-              key={eachImage.key}
-              rel="noopener"
-              target="blank"
-            >
-              <div className="w-full h-100 lg:h-125 overflow-hidden relative">
-                <Image
-                  src={eachImage.src}
-                  alt={eachImage.text}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
-              <p className="text-xl">{eachImage.subtitle}</p>
-            </Link>
-          ))}
-        </motion.div>
+      <div className="w-full h-full flex flex-col py-20" id="features">
+        <div className="w-full h-full flex flex-col items-center">
+          <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
+          <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
+        </div>
+        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
+          <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
+            {firstGrid.map((eachImage) => {
+              return (
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
+                  key={eachImage.key}
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+          <div className="flex flex-col gap-4 col-span-1">
+            {secondGrid.map((eachImage) => {
+              return (
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
+                  key={eachImage.key}
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+          <div className="flex flex-col gap-4 col-span-1">
+            {thirdGrid.map((eachImage) => {
+              return (
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
+                  key={eachImage.key}
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-auto"
+                  />
+                </Link>
+              );
+            })}
+            {fourthGrid.map((eachImage) => {
+              return (
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
+                  key={eachImage.key}
+                >
+                  <Image
+                    width={800}
+                    height={800}
+                    src={eachImage.src}
+                    alt={eachImage.src}
+                    className="w-full lg:w-120 h-fit"
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   };
 
-  const renderSecondPortfolio = () => {
+  const renderPricing = () => {
+    const pricing = [
+      {
+        text: "Basic Plan",
+        color: "white",
+        price: 1000000,
+        subtitle: "Includes RAW + 20 Edited Pictures",
+        features: [
+          { icon: "yes", text: "Duration: 1 hour" },
+          { icon: "no", text: "Duration: 2-3 hours" },
+          { icon: "no", text: "Duration: Half-day (4-5 hours)" },
+          { icon: "yes", text: "Locations: 1" },
+          { icon: "no", text: "Locations: Up to 2" },
+          { icon: "no", text: "Locations: Multiple (up to 3)" },
+        ],
+      },
+      {
+        text: "Standard Plan",
+        color: "black",
+        price: 2000000,
+        subtitle: "Includes RAW + 50 Edited Pictures",
+        tag: "Popular Choice",
+        features: [
+          { icon: "no", text: "Duration: 1 hour" },
+          { icon: "yes", text: "Duration: 2-3 hours" },
+          { icon: "no", text: "Duration: Half-day (4-5 hours)" },
+          { icon: "no", text: "Locations: 1" },
+          { icon: "yes", text: "Locations: Up to 2" },
+          { icon: "no", text: "Locations: Multiple (up to 3)" },
+        ],
+      },
+      {
+        text: "Premium Plan",
+        color: "white",
+        price: 3500000,
+        subtitle: "Includes RAW + 100 Edited Pictures",
+        features: [
+          { icon: "no", text: "Duration: 1 hour" },
+          { icon: "no", text: "Duration: 2-3 hours" },
+          { icon: "yes", text: "Duration: Half-day (4-5 hours)" },
+          { icon: "no", text: "Locations: 1" },
+          { icon: "no", text: "Locations: Up to 2" },
+          { icon: "yes", text: "Locations: Multiple (up to 3)" },
+        ],
+      },
+    ];
+
     return (
-      <div className="w-full min-h-screen py-20 lg:py-40 px-8 flex flex-col justify-center bg-stone-800 text-white">
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 1 }}
-          className="text-4xl lg:text-6xl text-center font-bold"
-        >
-          The Shared Chapter
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10 lg:mt-20"
-        >
-          {orange.map((eachImage) => (
-            <Link
-              href={eachImage.coordinate}
-              key={eachImage.key}
-              className="w-full flex flex-col"
-              rel="noopener"
-              target="blank"
-            >
-              <div className="relative w-full h-125 lg:h-160">
-                <Image
-                  fill
-                  src={eachImage.src}
-                  alt={eachImage.text}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-2xl font-bold mt-6 lg:mt-10">
-                {eachImage.text}
+      <div
+        className="w-full h-full flex flex-col items-center mb-40"
+        id="pricing"
+      >
+        <h1 className="text-6xl font-bold font-playfair">Pricing</h1>
+        <div className="w-full lg:w-1/8 mb-20 mt-2 pt-0.5 bg-black" />
+        <div className="w-full overflow-x-auto overflow-y-hidden p-4">
+          <div className="grid grid-cols-3 gap-4 min-w-270">
+            {pricing.map((eachPricing) => {
+              const { color, price, text, subtitle, features, tag } =
+                eachPricing;
+              return (
+                <div key={price} className="w-full">
+                  {renderPricingCard({
+                    color,
+                    price,
+                    subtitle,
+                    text,
+                    tag,
+                    features,
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderCTA = () => {
+    return (
+      <div className="w-full h-full bg-zinc-100" id="contact">
+        <div className="w-full max-w-6xl mx-auto p-8">
+          <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-4xl font-bold font-playfair">Contact Me</h1>
+              <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
+              <p className="text-lg mt-8">
+                Have a project in mind or need a photographer or filmmaker to
+                bring your vision to life? We'd love to hear from you!
               </p>
-              <p className="text-xl">{eachImage.subtitle}</p>
-            </Link>
-          ))}
-        </motion.div>
-      </div>
-    );
-  };
-
-  const renderThirdPortfolio = () => {
-    const combinedPic: ImageProps[] = [];
-    action.forEach((eachAction) => {
-      combinedPic.push({
-        key: eachAction.key === 1 ? 4 : eachAction.key + 3,
-        src: eachAction.src,
-        subtitle: eachAction.subtitle,
-        text: eachAction.text,
-        blurDataUrl: eachAction.blurDataUrl,
-        coordinate: eachAction.coordinate,
-      });
-    });
-    biru.forEach((eachBiru) => {
-      combinedPic.push(eachBiru);
-    });
-
-    return (
-      <div className="w-full h-full min-h-screen relative py-20 lg:py-40 px-8 flex flex-col justify-center bg-white text-black">
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 1 }}
-          className="text-4xl lg:text-6xl text-center font-bold"
-        >
-          The Grand Setting
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.5 }}
-          className="w-full h-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-6 mt-10 lg:mt-20"
-        >
-          {combinedPic.map((eachImage) => (
-            <Link
-              className="flex flex-col gap-2 col-span-1 drop-shadow-stone-300 drop-shadow-2xl"
-              key={eachImage.key}
-              href={eachImage.coordinate}
-              rel="noopener"
-              target="blank"
-            >
-              <div className="w-full h-100 lg:h-125 overflow-hidden relative">
-                <Image
-                  src={eachImage.src}
-                  alt={eachImage.text}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Your Name"
+                  type="text"
+                  value={email?.name}
+                  onChange={handleUpdateEmail("name")}
+                />
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Your Email"
+                  type="email"
+                  value={email?.email}
+                  onChange={handleUpdateEmail("email")}
+                />
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Message"
+                  type="text"
+                  value={email?.text}
+                  onChange={handleUpdateEmail("text")}
                 />
               </div>
-              <p className="text-2xl font-bold mt-4">{eachImage.text}</p>
-              <p className="text-xl">{eachImage.subtitle}</p>
-            </Link>
-          ))}
-        </motion.div>
+              <Button
+                onClick={handleSendEmail}
+                disabled={!email.email || !email.name || !email.text}
+                className="rounded-none mt-8 bg-black hover:ring-black p-4 w-full "
+              >
+                Send an Email
+              </Button>
+            </div>
+            <Image
+              width={800}
+              height={800}
+              src={"/action1.jpg"}
+              alt=""
+              className="h-140 w-full hidden sm:block"
+            />
+          </div>
+        </div>
       </div>
     );
   };
 
   const renderFooter = () => {
     return (
-      <div className="w-full h-220 bg-white flex flex-col lg:flex-row">
-        <div className="w-full h-full bg-stone-800 flex flex-col justify-center gap-20 p-8">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="flex flex-col gap-4 items-start"
-          >
-            <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
-              Feature My Work
-            </p>
-            <Link
-              href={`https://wa.me/${phone}?text=${message}`}
-              target="_blank"
-              className="text-white border rounded-full p-4 hover:bg-white/20"
-              rel="noopener"
-            >
-              Book a Call
-            </Link>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="flex flex-col lg:flex-row lg:items-start lg:justify-start justify-start items-end gap-4"
-          >
-            <div>
+      <>
+        <div className="bg-black text-white w-full h-full p-8 relative mt-80">
+          <div className="max-w-6xl mx-auto h-full flex flex-col lg:flex-row gap-10 lg:items-center">
+            <div className="w-full lg:w-2/3 min-h-full grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="col-span-1">
+                <h1 className="text-2xl font-bold font-playfair">
+                  Get In Touch
+                </h1>
+                <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-white" />
+                <p className="text-lg mt-8 lg:text-justify">
+                  Reach out for inquiries, collaborations, or just to say
+                  hello—I'd love to connect with you.
+                </p>
+              </div>
+              <div className="col-span-1">
+                <h1 className="text-2xl font-bold font-playfair">
+                  Where's the Office?
+                </h1>
+                <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-white" />
+                <p className="text-lg mt-8 lg:text-justify">
+                  Jl. Umbu Ndau Manu, Kampung Got
+                </p>
+              </div>
+              <div className="col-span-1">
+                <h1 className="text-2xl font-bold font-playfair">
+                  Connect With Us
+                </h1>
+                <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-white" />
+                <Link href={"https://www.instagram.com/ruang.arunika_/"}>
+                  <IconBrandInstagram className="size-10 mt-4" />
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block lg:w-1/3 h-full absolute right-0 -top-30">
               <Image
-                src="/logo-arunika.png"
-                alt="Logo Arunika"
-                height={200}
-                width={200}
-                priority
-                className="object-cover size-20 rounded-full"
+                width={800}
+                height={800}
+                src={"/hijau6.jpg"}
+                alt=""
+                className="h-122 w-90 rounded-t-xl"
               />
             </div>
-            <div>
-              <p className="text-white text-2xl lg:text-4xl text-end lg:text-start">
-                www.ruangarunika.id
-              </p>
-              <p className="text-white text-2xl text-end lg:text-start">
-                +62 821-4706-0726
-              </p>
-            </div>
-          </motion.div>
+          </div>
         </div>
-        <div className="w-full hidden lg:block">
-          <Image
-            width={1000}
-            height={1000}
-            src="/footer.jpg"
-            fetchPriority="high"
-            alt="About background"
-            className="object-cover w-full h-220"
-          />
+        <div className="w-full p-4 bg-zinc-200 text-black text-center font-sans">
+          Copyright © 2026 Ruang Arunika. All rights reserved.
         </div>
-      </div>
-    );
-  };
-
-  const renderLoader = () => {
-    const words = [{ text: "Ruang" }, { text: "Arunika" }];
-    return (
-      <div className="w-full h-screen bg-white">
-        <div className="w-full flex h-full justify-center items-center gap-4">
-          <Image
-            src="/logo-arunika.png"
-            alt="Logo Arunika"
-            height={200}
-            width={200}
-            priority
-            fetchPriority="high"
-            className="rounded-full size-20 animate-bounce"
-          />
-          <TypewriterEffectSmooth words={words} />
-        </div>
-      </div>
+      </>
     );
   };
 
   const renderMainSection = () => {
-    return loading ? (
-      renderLoader()
-    ) : (
+    return (
       <div className="w-full h-full">
-        {renderHeroSection()}
-        {renderAboutSection()}
-        {renderFirstPortfolio()}
-        {renderSecondPortfolio()}
-        {renderThirdPortfolio()}
+        <Toaster />
+        {renderNavbar()}
+        <LayoutWrapper>
+          {renderHero()}
+          {renderAbout()}
+          {renderPortfolio()}
+          {renderPricing()}
+        </LayoutWrapper>
+        {renderCTA()}
         {renderFooter()}
       </div>
     );
@@ -365,3 +518,64 @@ export default function Home() {
 
   return renderMainSection();
 }
+
+const renderPricingCard = ({
+  tag,
+  text,
+  subtitle,
+  price,
+  color,
+  features,
+}: {
+  tag?: string;
+  text: string;
+  subtitle: string;
+  price: number;
+  color: string;
+  features: { icon: string; text: string }[];
+}) => {
+  return (
+    <div
+      className={`col-span-1 border px-4 py-8 h-full w-full text-center text-${color === "white" ? "black" : "white"} bg-${color} rounded-2xl relative flex flex-col items-start gap-2`}
+    >
+      <p className={`text-xl font-semibold my-8`}>{text}</p>
+      {tag && (
+        <div className="w-fit h-auto p-2 bg-linear-to-r from-amber-600 via-amber-500 to-amber-400 rounded-xl absolute -top-4 right-10 z-0 text-sm">
+          {tag}
+        </div>
+      )}
+      <h1 className={`text-4xl font-bold font-sans text-center`}>
+        IDR {toCurrency(price)}
+      </h1>
+      <p className={`text-base`}>{subtitle}</p>
+      <Button
+        className={`${
+          color === "black"
+            ? "bg-white text-black hover:ring-none"
+            : "bg-black text-white hover:ring-none"
+        } w-full my-4`}
+      >
+        Book Now
+      </Button>
+      <hr className="w-full mb-4" />
+      <p className={`text-base font-semibold`}>Features</p>
+      <div className="mt-4 w-full">
+        {features?.map((eachFeatures, index) => {
+          return (
+            <div
+              key={index}
+              className="w-full flex gap-2 items-start justify-start h-fit py-1"
+            >
+              {eachFeatures.icon === "yes" ? (
+                <CheckCircleIcon className="size-4 text-white bg-green-800 rounded-full mt-0.5" />
+              ) : (
+                <XCircleIcon className="size-4 bg-zinc-600 text-white rounded-full mt-0.5" />
+              )}
+              <p className="text-start text-sm">{eachFeatures.text}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

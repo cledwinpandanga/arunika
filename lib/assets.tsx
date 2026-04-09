@@ -149,7 +149,7 @@ export const action: ImageProps[] = [
   // blurDataUrl:"",
   // },
   {
-    key: 3,
+    key: 2,
     text: "",
     subtitle: "",
     blurDataUrl: "",
