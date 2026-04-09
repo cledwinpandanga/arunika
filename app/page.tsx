@@ -1,6 +1,7 @@
 "use client";
 
 import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
+import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper";
 import {
   Navbar,
   NavBody,
@@ -147,7 +148,11 @@ export default function Home() {
           loading="lazy"
           className="lg:block lg:absolute -top-13.5 lg:right-0 h-140 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-140 "
         />
-        <div className="lg:w-1/2 2/3 h-full my-auto text-wrap break-all flex flex-col items-center lg:items-start">
+        <TransitionWrapper
+          className="lg:w-1/2 2/3 h-full my-auto text-wrap break-all flex flex-col items-center lg:items-start"
+          animateFrom="bottom"
+          duration={1.5}
+        >
           <h1 className="text-7xl lg:text-8xl font-bold font-playfair">
             Ruang
           </h1>
@@ -167,7 +172,7 @@ export default function Home() {
               CONTACT US
             </Button>
           </Link>
-        </div>
+        </TransitionWrapper>
         <div className="lg:w-1/2 1/3 h-full" />
       </div>
     );
@@ -179,7 +184,11 @@ export default function Home() {
         className="w-full min-h-[80dvh] h-full flex flex-col lg:flex-row gap-20 lg:gap-0 lg:items-center"
         id="about"
       >
-        <div className="w-full lg:w-1/2 h-full">
+        <TransitionWrapper
+          animateFrom="left"
+          duration={1.5}
+          className="w-full lg:w-1/2 h-full"
+        >
           <Image
             width={800}
             height={800}
@@ -187,8 +196,12 @@ export default function Home() {
             alt=""
             className="w-full lg:w-110 h-full lg:h-160"
           />
-        </div>
-        <div className="w-full lg:w-1/2 h-full flex flex-col items-center lg:items-start lg:justify-center">
+        </TransitionWrapper>
+        <TransitionWrapper
+          animateFrom="right"
+          duration={1.5}
+          className="w-full lg:w-1/2 h-full flex flex-col items-center lg:items-start lg:justify-center"
+        >
           <h1 className="text-6xl font-bold font-playfair">About Us</h1>
           <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
           <p className="text-2xl mt-8 font-playfair text-center">
@@ -206,7 +219,7 @@ export default function Home() {
               View Our Ideas
             </Button>
           </Link>
-        </div>
+        </TransitionWrapper>
       </div>
     );
   };
@@ -238,13 +251,15 @@ export default function Home() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <Image
-                    width={800}
-                    height={800}
-                    src={eachImage.src}
-                    alt={eachImage.src}
-                    className="w-full lg:w-120 h-auto"
-                  />
+                  <TransitionWrapper animateFrom="bottom" duration={1.5}>
+                    <Image
+                      width={800}
+                      height={800}
+                      src={eachImage.src}
+                      alt={eachImage.src}
+                      className="w-full lg:w-120 h-auto"
+                    />
+                  </TransitionWrapper>
                 </Link>
               );
             })}
@@ -258,13 +273,15 @@ export default function Home() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <Image
-                    width={800}
-                    height={800}
-                    src={eachImage.src}
-                    alt={eachImage.src}
-                    className="w-full lg:w-120 h-auto"
-                  />
+                  <TransitionWrapper animateFrom="bottom" duration={2}>
+                    <Image
+                      width={800}
+                      height={800}
+                      src={eachImage.src}
+                      alt={eachImage.src}
+                      className="w-full lg:w-120 h-auto"
+                    />
+                  </TransitionWrapper>
                 </Link>
               );
             })}
@@ -278,13 +295,15 @@ export default function Home() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <Image
-                    width={800}
-                    height={800}
-                    src={eachImage.src}
-                    alt={eachImage.src}
-                    className="w-full lg:w-120 h-auto"
-                  />
+                  <TransitionWrapper animateFrom="bottom" duration={3}>
+                    <Image
+                      width={800}
+                      height={800}
+                      src={eachImage.src}
+                      alt={eachImage.src}
+                      className="w-full lg:w-120 h-auto"
+                    />
+                  </TransitionWrapper>
                 </Link>
               );
             })}
@@ -536,7 +555,9 @@ const renderPricingCard = ({
 }) => {
   return (
     <div
-      className={`col-span-1 border px-4 py-8 h-full w-full text-center text-${color === "white" ? "black" : "white"} bg-${color} rounded-2xl relative flex flex-col items-start gap-2`}
+      className={`drop-shadow-none
+  hover:drop-shadow-[0_10px_15px_rgba(251,191,36,0.5)]
+  transition-all duration-300 col-span-1 border px-4 py-8 h-full w-full text-center text-${color === "white" ? "black" : "white"} bg-${color} rounded-2xl relative flex flex-col items-start gap-2`}
     >
       <p className={`text-xl font-semibold my-8`}>{text}</p>
       {tag && (
