@@ -19,10 +19,37 @@ import { IconBrandInstagram } from "@tabler/icons-react";
 import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { features } from "process";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
+interface EmailProps {
+  name: string;
+  email: string;
+  text: string;
+}
 export default function Home() {
+  const [email, setEmail] = useState<EmailProps>({
+    email: "",
+    text: "",
+    name: "",
+  });
+
+  const handleUpdateEmail =
+    (type: "email" | "text" | "name") =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+
+      setEmail((prev: any) => ({
+        ...prev,
+        [type]: value,
+      }));
+    };
+
+  const handleSendEmail = () => {
+    toast.success("Email sent.");
+    setEmail({ name: "", email: "", text: "" });
+  };
+
   const renderNavbar = () => {
     const navItems = [
       {
@@ -174,11 +201,11 @@ export default function Home() {
             framing of a cinematic shot. We strive to bring authenticity and
             artistry to every project.
           </p>
-          <a href="#features" className="w-full">
+          <Link href="#features" className="w-full">
             <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
               View Our Ideas
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -363,16 +390,69 @@ export default function Home() {
     );
   };
 
+  const renderCTA = () => {
+    return (
+      <div className="w-full h-full bg-zinc-100" id="contact">
+        <div className="w-full max-w-6xl mx-auto p-8">
+          <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-10">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-4xl font-bold font-playfair">Contact Me</h1>
+              <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
+              <p className="text-lg mt-8">
+                Have a project in mind or need a photographer or filmmaker to
+                bring your vision to life? We'd love to hear from you!
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Your Name"
+                  type="text"
+                  value={email?.name}
+                  onChange={handleUpdateEmail("name")}
+                />
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Your Email"
+                  type="email"
+                  value={email?.email}
+                  onChange={handleUpdateEmail("email")}
+                />
+                <input
+                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
+                  placeholder="Message"
+                  type="text"
+                  value={email?.text}
+                  onChange={handleUpdateEmail("text")}
+                />
+              </div>
+              <Button
+                onClick={handleSendEmail}
+                disabled={!email.email || !email.name || !email.text}
+                className="rounded-none mt-8 bg-black hover:ring-black p-4 w-full "
+              >
+                Send an Email
+              </Button>
+            </div>
+            <Image
+              width={800}
+              height={800}
+              src={"/action1.jpg"}
+              alt=""
+              className="h-140 w-full hidden sm:block"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderFooter = () => {
     return (
       <>
-        <div
-          className="bg-black text-white w-full h-full p-8 min-h-160 relative mt-80"
-          id="contact"
-        >
+        <div className="bg-black text-white w-full h-full p-8 relative mt-80">
           <div className="max-w-6xl mx-auto h-full flex flex-col lg:flex-row gap-10 lg:items-center">
-            <div className="w-full lg:w-2/3 h-full grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div>
+            <div className="w-full lg:w-2/3 min-h-full grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="col-span-1">
                 <h1 className="text-2xl font-bold font-playfair">
                   Get In Touch
                 </h1>
@@ -382,7 +462,7 @@ export default function Home() {
                   hello—I'd love to connect with you.
                 </p>
               </div>
-              <div>
+              <div className="col-span-1">
                 <h1 className="text-2xl font-bold font-playfair">
                   Where's the Office?
                 </h1>
@@ -391,7 +471,7 @@ export default function Home() {
                   Jl. Umbu Ndau Manu, Kampung Got
                 </p>
               </div>
-              <div>
+              <div className="col-span-1">
                 <h1 className="text-2xl font-bold font-playfair">
                   Connect With Us
                 </h1>
@@ -401,18 +481,18 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="hidden lg:block lg:w-1/3 h-full absolute right-0 -top-32">
+            <div className="hidden lg:block lg:w-1/3 h-full absolute right-0 -top-30">
               <Image
                 width={800}
                 height={800}
                 src={"/hijau6.jpg"}
                 alt=""
-                className="w-full h-full min-h-192 min-w-105 rounded-tl-4xl"
+                className="h-122 w-90 rounded-t-xl"
               />
             </div>
           </div>
         </div>
-        <div className="w-full p-4 bg-amber-500 text-white text-center font-sans">
+        <div className="w-full p-4 bg-zinc-200 text-black text-center font-sans">
           Copyright © 2026 Ruang Arunika. All rights reserved.
         </div>
       </>
@@ -422,6 +502,7 @@ export default function Home() {
   const renderMainSection = () => {
     return (
       <div className="w-full h-full">
+        <Toaster />
         {renderNavbar()}
         <LayoutWrapper>
           {renderHero()}
@@ -429,6 +510,7 @@ export default function Home() {
           {renderPortfolio()}
           {renderPricing()}
         </LayoutWrapper>
+        {renderCTA()}
         {renderFooter()}
       </div>
     );
@@ -458,7 +540,7 @@ const renderPricingCard = ({
     >
       <p className={`text-xl font-semibold my-8`}>{text}</p>
       {tag && (
-        <div className="w-fit h-auto p-2 bg-linear-to-r from-amber-600 to-amber-400 rounded-xl absolute -top-4 right-10 z-0 text-sm">
+        <div className="w-fit h-auto p-2 bg-linear-to-r from-amber-600 via-amber-500 to-amber-400 rounded-xl absolute -top-4 right-10 z-0 text-sm">
           {tag}
         </div>
       )}
