@@ -48,6 +48,16 @@ export default function Home() {
 
   const handleSendEmail = () => {
     toast.success("Email sent.");
+    const subject = "Booking";
+    const body = `Hi team Ruang Arunika! Saya,
+    Nama: ${email.name}
+    Email: ${email.email}
+    Pesan: ${email.text}`;
+    const mailtoLink = `mailto:ruangarunika@gmail.com?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
     setEmail({ name: "", email: "", text: "" });
   };
 
