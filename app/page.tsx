@@ -357,7 +357,7 @@ export default function Home() {
                       width={800}
                       height={800}
                       src={eachImage.src}
-                      alt={eachImage.src}
+                      alt={"biru"}
                       className="w-full lg:w-120 h-auto"
                     />
                   </TransitionWrapper>
