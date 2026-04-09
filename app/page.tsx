@@ -344,26 +344,28 @@ export default function Home() {
             })}
           </div>
           <div className="flex flex-col gap-4 col-span-1">
-            {thirdGrid.map((eachImage) => {
-              return (
-                <Link
-                  target="blank"
-                  rel="noopener"
-                  href={eachImage.coordinate}
-                  key={eachImage.key}
-                >
-                  <TransitionWrapper animateFrom="bottom" duration={3}>
-                    <Image
-                      width={800}
-                      height={800}
-                      src={eachImage.src}
-                      alt={"biru"}
-                      className="w-full lg:w-120 h-auto"
-                    />
-                  </TransitionWrapper>
-                </Link>
-              );
-            })}
+            {thirdGrid
+              .filter((eachImg) => eachImg.src !== "/biru2.jpg")
+              .map((eachImage) => {
+                return (
+                  <Link
+                    target="blank"
+                    rel="noopener"
+                    href={eachImage.coordinate}
+                    key={eachImage.key}
+                  >
+                    <TransitionWrapper animateFrom="bottom" duration={3}>
+                      <Image
+                        width={800}
+                        height={800}
+                        src={eachImage.src}
+                        alt={eachImage.src}
+                        className="w-full lg:w-120 h-auto"
+                      />
+                    </TransitionWrapper>
+                  </Link>
+                );
+              })}
             {fourthGrid.map((eachImage) => {
               return (
                 <Link
