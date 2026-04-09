@@ -75,11 +75,11 @@ const pricing = [
   },
 ];
 
-const navItems = [
-  {
-    name: "Home",
-    link: "#home",
-  },
+export const navItems = [
+  // {
+  //   name: "Home",
+  //   link: "#home",
+  // },
   {
     name: "Features",
     link: "#features",
@@ -95,6 +95,10 @@ const navItems = [
   {
     name: "About",
     link: "#about",
+  },
+  {
+    name: "Gallery",
+    link: "/gallery",
   },
 ];
 
