@@ -11,7 +11,6 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { Toaster } from "react-hot-toast";
 import { navItems } from "../page";
 import { useState } from "react";
 import { IconBrandInstagram } from "@tabler/icons-react";
@@ -251,7 +250,6 @@ export default function Gallery() {
   };
   return (
     <div className="w-full h-full">
-      <Toaster />
       {renderNavbar()}
       {renderPortfolio()}
       {renderFooter()}
