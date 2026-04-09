@@ -28,7 +28,78 @@ interface EmailProps {
   email: string;
   text: string;
 }
+
+const pricing = [
+  {
+    text: "Basic Plan",
+    color: "white",
+    price: 1000000,
+    subtitle: "Includes RAW + 20 Edited Pictures",
+    features: [
+      { icon: "yes", text: "Duration: 1 hour" },
+      { icon: "no", text: "Duration: 2-3 hours" },
+      { icon: "no", text: "Duration: Half-day (4-5 hours)" },
+      { icon: "yes", text: "Locations: 1" },
+      { icon: "no", text: "Locations: Up to 2" },
+      { icon: "no", text: "Locations: Multiple (up to 3)" },
+    ],
+  },
+  {
+    text: "Standard Plan",
+    color: "black",
+    price: 2000000,
+    subtitle: "Includes RAW + 50 Edited Pictures",
+    tag: "Popular Choice",
+    features: [
+      { icon: "no", text: "Duration: 1 hour" },
+      { icon: "yes", text: "Duration: 2-3 hours" },
+      { icon: "no", text: "Duration: Half-day (4-5 hours)" },
+      { icon: "no", text: "Locations: 1" },
+      { icon: "yes", text: "Locations: Up to 2" },
+      { icon: "no", text: "Locations: Multiple (up to 3)" },
+    ],
+  },
+  {
+    text: "Premium Plan",
+    color: "white",
+    price: 3500000,
+    subtitle: "Includes RAW + 100 Edited Pictures",
+    features: [
+      { icon: "no", text: "Duration: 1 hour" },
+      { icon: "no", text: "Duration: 2-3 hours" },
+      { icon: "yes", text: "Duration: Half-day (4-5 hours)" },
+      { icon: "no", text: "Locations: 1" },
+      { icon: "no", text: "Locations: Up to 2" },
+      { icon: "yes", text: "Locations: Multiple (up to 3)" },
+    ],
+  },
+];
+
+const navItems = [
+  {
+    name: "Home",
+    link: "#home",
+  },
+  {
+    name: "Features",
+    link: "#features",
+  },
+  {
+    name: "Pricing",
+    link: "#pricing",
+  },
+  {
+    name: "Contact",
+    link: "#contact",
+  },
+  {
+    name: "About",
+    link: "#about",
+  },
+];
+
 export default function Home() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [email, setEmail] = useState<EmailProps>({
     email: "",
     text: "",
@@ -62,30 +133,6 @@ export default function Home() {
   };
 
   const renderNavbar = () => {
-    const navItems = [
-      {
-        name: "Home",
-        link: "#home",
-      },
-      {
-        name: "Features",
-        link: "#features",
-      },
-      {
-        name: "Pricing",
-        link: "#pricing",
-      },
-      {
-        name: "Contact",
-        link: "#contact",
-      },
-      {
-        name: "About",
-        link: "#about",
-      },
-    ];
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
     return (
       <div className="fixed w-full z-10">
         <Navbar>
@@ -342,52 +389,6 @@ export default function Home() {
   };
 
   const renderPricing = () => {
-    const pricing = [
-      {
-        text: "Basic Plan",
-        color: "white",
-        price: 1000000,
-        subtitle: "Includes RAW + 20 Edited Pictures",
-        features: [
-          { icon: "yes", text: "Duration: 1 hour" },
-          { icon: "no", text: "Duration: 2-3 hours" },
-          { icon: "no", text: "Duration: Half-day (4-5 hours)" },
-          { icon: "yes", text: "Locations: 1" },
-          { icon: "no", text: "Locations: Up to 2" },
-          { icon: "no", text: "Locations: Multiple (up to 3)" },
-        ],
-      },
-      {
-        text: "Standard Plan",
-        color: "black",
-        price: 2000000,
-        subtitle: "Includes RAW + 50 Edited Pictures",
-        tag: "Popular Choice",
-        features: [
-          { icon: "no", text: "Duration: 1 hour" },
-          { icon: "yes", text: "Duration: 2-3 hours" },
-          { icon: "no", text: "Duration: Half-day (4-5 hours)" },
-          { icon: "no", text: "Locations: 1" },
-          { icon: "yes", text: "Locations: Up to 2" },
-          { icon: "no", text: "Locations: Multiple (up to 3)" },
-        ],
-      },
-      {
-        text: "Premium Plan",
-        color: "white",
-        price: 3500000,
-        subtitle: "Includes RAW + 100 Edited Pictures",
-        features: [
-          { icon: "no", text: "Duration: 1 hour" },
-          { icon: "no", text: "Duration: 2-3 hours" },
-          { icon: "yes", text: "Duration: Half-day (4-5 hours)" },
-          { icon: "no", text: "Locations: 1" },
-          { icon: "no", text: "Locations: Up to 2" },
-          { icon: "yes", text: "Locations: Multiple (up to 3)" },
-        ],
-      },
-    ];
-
     return (
       <div
         className="w-full h-full flex flex-col items-center mb-40"
