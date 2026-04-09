@@ -76,10 +76,6 @@ const pricing = [
 ];
 
 export const navItems = [
-  // {
-  //   name: "Home",
-  //   link: "#home",
-  // },
   {
     name: "Features",
     link: "#features",
@@ -197,7 +193,7 @@ export default function Home() {
   const renderHero = () => {
     return (
       <div
-        className="w-full min-h-[calc(100vh-54px)] h-full flex flex-col gap-4 lg:flex-row relative"
+        className="w-full h-full lg:h-[calc(100vh-54px)] flex flex-col gap-4 lg:flex-row relative"
         id="home"
       >
         <Image
@@ -207,10 +203,10 @@ export default function Home() {
           alt=""
           fetchPriority="high"
           loading="lazy"
-          className="lg:block lg:absolute -top-13.5 lg:right-0 h-140 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-140 "
+          className="absolute -top-13.5 lg:right-0 h-120 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-138"
         />
         <TransitionWrapper
-          className="lg:w-1/2 2/3 h-full my-auto text-wrap break-all flex flex-col items-center lg:items-start"
+          className="w-full order-1 lg:order-0 lg:w-1/2 min-h-full text-wrap break-all flex flex-col justify-center items-center lg:items-start"
           animateFrom="bottom"
           duration={1.5}
         >
@@ -229,12 +225,12 @@ export default function Home() {
             rel="noopener noreferrer"
             className="w-full"
           >
-            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-1/2">
+            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
               CONTACT US
             </Button>
           </Link>
         </TransitionWrapper>
-        <div className="lg:w-1/2 1/3 h-full" />
+        <div className="w-full h-full min-h-120 order-0 lg:order-1 lg:w-1/2 " />
       </div>
     );
   };
@@ -537,7 +533,7 @@ export default function Home() {
 
   const renderMainSection = () => {
     return (
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-hidden">
         <Toaster />
         {renderNavbar()}
         <LayoutWrapper>
