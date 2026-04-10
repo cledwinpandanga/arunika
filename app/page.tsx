@@ -249,7 +249,7 @@ export default function Home() {
           <Image
             width={800}
             height={800}
-            src={"/orange3.jpg"}
+            src={"/orange6.jpg"}
             alt=""
             className="w-full lg:w-110 h-full lg:h-160"
           />
