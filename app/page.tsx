@@ -14,8 +14,8 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { Button } from "@/components/ui/stateful-button";
-import { action, biru, hijau, orange } from "@/lib/assets";
-import { toCurrency } from "@/lib/utils";
+import { action, biru, bnw, hijau, orange } from "@/lib/assets";
+import { getMessage, toCurrency } from "@/lib/utils";
 import { IconBrandInstagram } from "@tabler/icons-react";
 import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 import Image from "next/image";
@@ -33,45 +33,50 @@ const pricing = [
   {
     text: "Basic Plan",
     color: "white",
-    price: 1000000,
-    subtitle: "Includes RAW + 20 Edited Pictures",
+    price: 500000,
+    subtitle: "20 Soft Edited Pictures",
     features: [
+      { icon: "yes", text: "1 Photographer" },
       { icon: "yes", text: "Duration: 1 hour" },
-      { icon: "no", text: "Duration: 2-3 hours" },
-      { icon: "no", text: "Duration: Half-day (4-5 hours)" },
       { icon: "yes", text: "Locations: 1" },
-      { icon: "no", text: "Locations: Up to 2" },
-      { icon: "no", text: "Locations: Multiple (up to 3)" },
+      { icon: "yes", text: "Pictures: 20 Soft Edited File" },
+      { icon: "yes", text: "File shared via Google Drive" },
     ],
+    bookType: "basic",
   },
   {
     text: "Standard Plan",
     color: "black",
-    price: 2000000,
-    subtitle: "Includes RAW + 50 Edited Pictures",
+    price: 800000,
+    subtitle: "All files includes RAW + 35 Edited Pictures",
     tag: "Popular Choice",
     features: [
-      { icon: "no", text: "Duration: 1 hour" },
-      { icon: "yes", text: "Duration: 2-3 hours" },
-      { icon: "no", text: "Duration: Half-day (4-5 hours)" },
-      { icon: "no", text: "Locations: 1" },
+      { icon: "yes", text: "2 Photographer" },
+      { icon: "yes", text: "Duration: 2 hours" },
       { icon: "yes", text: "Locations: Up to 2" },
-      { icon: "no", text: "Locations: Multiple (up to 3)" },
+      { icon: "yes", text: "Pictures: 35 Edited File" },
+      { icon: "yes", text: "All files in JPG format" },
+      { icon: "yes", text: "Free pose request" },
+      { icon: "yes", text: "File shared via Google Drive" },
     ],
+    bookType: "standard",
   },
   {
     text: "Premium Plan",
     color: "white",
-    price: 3500000,
+    price: 1200000,
     subtitle: "Includes RAW + 100 Edited Pictures",
     features: [
-      { icon: "no", text: "Duration: 1 hour" },
-      { icon: "no", text: "Duration: 2-3 hours" },
-      { icon: "yes", text: "Duration: Half-day (4-5 hours)" },
-      { icon: "no", text: "Locations: 1" },
-      { icon: "no", text: "Locations: Up to 2" },
-      { icon: "yes", text: "Locations: Multiple (up to 3)" },
+      { icon: "yes", text: "1 Photographer" },
+      { icon: "yes", text: "1 Videographer" },
+      { icon: "yes", text: "Duration: 3 hours" },
+      { icon: "yes", text: "Pictures: Unlimited" },
+      { icon: "yes", text: "All files in JPG format" },
+      { icon: "yes", text: "Free pose request" },
+      { icon: "yes", text: "Pictures: 50 Edited File" },
+      { icon: "yes", text: "Locations: Customizable / Negotiable" },
     ],
+    bookType: "premium",
   },
 ];
 
@@ -217,7 +222,7 @@ export default function Home() {
             Arunika
           </p>
           <p className="text-2xl font-semibold mt-8 font-playfair">
-            East Sumba, Indonesia
+            Sumba, Indonesia
           </p>
           <Link
             href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
@@ -249,7 +254,7 @@ export default function Home() {
           <Image
             width={800}
             height={800}
-            src={"/orange3.jpg"}
+            src={"/orange6.jpg"}
             alt=""
             className="w-full lg:w-110 h-full lg:h-160"
           />
@@ -288,9 +293,7 @@ export default function Home() {
 
     const secondGrid = orange.map((eachImage) => eachImage);
     const thirdGrid = biru.map((eachImage) => eachImage);
-    const fourthGrid = action
-      .filter((eachImg) => eachImg.key <= 2)
-      .map((eachImage) => eachImage);
+    const fourthGrid = bnw.map((eachImage) => eachImage);
 
     return (
       <div className="w-full h-full flex flex-col py-20" id="features">
@@ -298,7 +301,7 @@ export default function Home() {
           <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
-        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-10">
+        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-30">
           <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
             {firstGrid.map((eachImage) => {
               return (
@@ -366,6 +369,8 @@ export default function Home() {
                   </Link>
                 );
               })}
+          </div>
+          <div className="flex flex-col gap-4 col-span-1">
             {fourthGrid.map((eachImage) => {
               return (
                 <Link
@@ -374,13 +379,15 @@ export default function Home() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <Image
-                    width={800}
-                    height={800}
-                    src={eachImage.src}
-                    alt={eachImage.src}
-                    className="w-full lg:w-120 h-fit"
-                  />
+                  <TransitionWrapper animateFrom="bottom" duration={3}>
+                    <Image
+                      width={800}
+                      height={800}
+                      src={eachImage.src}
+                      alt={eachImage.src}
+                      className="w-full lg:w-120 h-fit"
+                    />
+                  </TransitionWrapper>
                 </Link>
               );
             })}
@@ -401,7 +408,7 @@ export default function Home() {
         <div className="w-full overflow-x-auto overflow-y-hidden p-4">
           <div className="grid grid-cols-3 gap-4 min-w-270">
             {pricing.map((eachPricing) => {
-              const { color, price, text, subtitle, features, tag } =
+              const { color, price, text, subtitle, features, tag, bookType } =
                 eachPricing;
               return (
                 <div key={price} className="w-full">
@@ -412,12 +419,23 @@ export default function Home() {
                     text,
                     tag,
                     features,
+                    bookType,
                   })}
                 </div>
               );
             })}
           </div>
         </div>
+        <Link
+          href={"/price-list/ruang-arunika-price-list.pdf"}
+          className="w-full h-full"
+          rel="noopener"
+          target="blank"
+        >
+          <Button className="mt-20 w-full bg-black rounded-none hover:ring-none">
+            View PDF
+          </Button>
+        </Link>
       </div>
     );
   };
@@ -558,6 +576,7 @@ const renderPricingCard = ({
   price,
   color,
   features,
+  bookType,
 }: {
   tag?: string;
   text: string;
@@ -565,7 +584,10 @@ const renderPricingCard = ({
   price: number;
   color: string;
   features: { icon: string; text: string }[];
+  bookType: string;
 }) => {
+  const waLink = `https://wa.me/6282147060726?text=${encodeURIComponent(getMessage(bookType))}`;
+
   return (
     <div
       className={`drop-shadow-none
@@ -581,16 +603,18 @@ const renderPricingCard = ({
       <h1 className={`text-4xl font-bold font-sans text-center`}>
         IDR {toCurrency(price)}
       </h1>
-      <p className={`text-base`}>{subtitle}</p>
-      <Button
-        className={`${
-          color === "black"
-            ? "bg-white text-black hover:ring-none"
-            : "bg-black text-white hover:ring-none"
-        } w-full my-4`}
-      >
-        Book Now
-      </Button>
+      <p className={`text-base text-start`}>{subtitle}</p>
+      <Link href={waLink} rel="noopener" target="blank" className="w-full">
+        <Button
+          className={`${
+            color === "black"
+              ? "bg-white text-black hover:ring-none"
+              : "bg-black text-white hover:ring-none"
+          } w-full my-4`}
+        >
+          Book Now
+        </Button>
+      </Link>
       <hr className="w-full mb-4" />
       <p className={`text-base font-semibold`}>Features</p>
       <div className="mt-4 w-full">
@@ -600,11 +624,11 @@ const renderPricingCard = ({
               key={index}
               className="w-full flex gap-2 items-start justify-start h-fit py-1"
             >
-              {eachFeatures.icon === "yes" ? (
-                <CheckCircleIcon className="size-4 text-white bg-green-800 rounded-full mt-0.5" />
+              <CheckCircleIcon className="size-4 text-white bg-green-800 rounded-full mt-0.5" />
+              {/* {eachFeatures.icon === "yes" ? (
               ) : (
                 <XCircleIcon className="size-4 bg-zinc-600 text-white rounded-full mt-0.5" />
-              )}
+              )} */}
               <p className="text-start text-sm">{eachFeatures.text}</p>
             </div>
           );
