@@ -132,7 +132,7 @@ export default function Gallery() {
               <Image
                 width={800}
                 height={800}
-                src={"/hijau6.jpg"}
+                src={"/orange5.jpg"}
                 alt=""
                 className="h-122 w-90 rounded-t-xl"
               />
@@ -154,14 +154,15 @@ export default function Gallery() {
     const secondGrid = orange.map((eachImage) => eachImage);
     const thirdGrid = biru.map((eachImage) => eachImage);
     const fourthGrid = bnw.map((eachImage) => eachImage);
+    const fifthGrid = action.map((eachImage) => eachImage);
 
     return (
-      <div className="w-full h-full flex flex-col py-20" id="features">
+      <div className="w-full h-full flex flex-col p-20" id="features">
         <div className="w-full h-full flex flex-col items-center">
           <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
-        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-30">
+        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 py-30">
           <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
             {firstGrid.map((eachImage) => {
               return (
@@ -239,7 +240,29 @@ export default function Gallery() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <TransitionWrapper animateFrom="bottom" duration={3}>
+                  <TransitionWrapper animateFrom="bottom" duration={4}>
+                    <Image
+                      width={800}
+                      height={800}
+                      src={eachImage.src}
+                      alt={eachImage.src}
+                      className="w-full lg:w-120 h-fit"
+                    />
+                  </TransitionWrapper>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="flex flex-col gap-4 col-span-1">
+            {fifthGrid.map((eachImage) => {
+              return (
+                <Link
+                  target="blank"
+                  rel="noopener"
+                  href={eachImage.coordinate}
+                  key={eachImage.key}
+                >
+                  <TransitionWrapper animateFrom="bottom" duration={5}>
                     <Image
                       width={800}
                       height={800}

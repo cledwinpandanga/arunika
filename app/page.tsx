@@ -535,7 +535,7 @@ export default function Home() {
               <Image
                 width={800}
                 height={800}
-                src={"/hijau6.jpg"}
+                src={"/orange5.jpg"}
                 alt=""
                 className="h-122 w-90 rounded-t-xl"
               />
