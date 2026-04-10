@@ -15,14 +15,20 @@ import { navItems } from "../page";
 import { useState } from "react";
 import { IconBrandInstagram } from "@tabler/icons-react";
 import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper";
-import { hijau, orange, biru, action } from "@/lib/assets";
+import { hijau, orange, biru, action, bnw } from "@/lib/assets";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Gallery() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const newNavItems = navItems.map((eachNav) => {
-    let link = `/${eachNav.link}`;
+    let link = ``;
+    if (pathname === eachNav.link) {
+      link = `${eachNav.link}`;
+    } else link = `/${eachNav.link}`;
+
     return {
       ...eachNav,
       link,
@@ -147,16 +153,16 @@ export default function Gallery() {
 
     const secondGrid = orange.map((eachImage) => eachImage);
     const thirdGrid = biru.map((eachImage) => eachImage);
-    const fourthGrid = action.map((eachImage) => eachImage);
+    const fourthGrid = bnw.map((eachImage) => eachImage);
 
     return (
-      <div className="w-full h-full flex flex-col py-20 px-8" id="features">
+      <div className="w-full h-full flex flex-col py-20" id="features">
         <div className="w-full h-full flex flex-col items-center">
-          <h1 className="text-6xl font-bold font-playfair">Gallery</h1>
+          <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
-        <div className="w-full h-full pt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 drop-shadow-2xl">
-          <div className="flex flex-col gap-4 col-span-1">
+        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-30">
+          <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
             {firstGrid.map((eachImage) => {
               return (
                 <Link
@@ -201,26 +207,28 @@ export default function Gallery() {
             })}
           </div>
           <div className="flex flex-col gap-4 col-span-1">
-            {thirdGrid.map((eachImage) => {
-              return (
-                <Link
-                  target="blank"
-                  rel="noopener"
-                  href={eachImage.coordinate}
-                  key={eachImage.key}
-                >
-                  <TransitionWrapper animateFrom="bottom" duration={3}>
-                    <Image
-                      width={800}
-                      height={800}
-                      src={eachImage.src}
-                      alt={eachImage.src}
-                      className="w-full lg:w-120 h-auto"
-                    />
-                  </TransitionWrapper>
-                </Link>
-              );
-            })}
+            {thirdGrid
+              .filter((eachImg) => eachImg.src !== "/biru2.jpg")
+              .map((eachImage) => {
+                return (
+                  <Link
+                    target="blank"
+                    rel="noopener"
+                    href={eachImage.coordinate}
+                    key={eachImage.key}
+                  >
+                    <TransitionWrapper animateFrom="bottom" duration={3}>
+                      <Image
+                        width={800}
+                        height={800}
+                        src={eachImage.src}
+                        alt={eachImage.src}
+                        className="w-full lg:w-120 h-auto"
+                      />
+                    </TransitionWrapper>
+                  </Link>
+                );
+              })}
           </div>
           <div className="flex flex-col gap-4 col-span-1">
             {fourthGrid.map((eachImage) => {
@@ -231,7 +239,7 @@ export default function Gallery() {
                   href={eachImage.coordinate}
                   key={eachImage.key}
                 >
-                  <TransitionWrapper animateFrom="bottom" duration={4}>
+                  <TransitionWrapper animateFrom="bottom" duration={3}>
                     <Image
                       width={800}
                       height={800}
