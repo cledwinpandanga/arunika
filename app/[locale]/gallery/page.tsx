@@ -1,98 +1,14 @@
 "use client";
 
-import {
-  Navbar,
-  NavBody,
-  NavbarLogo,
-  NavItems,
-  NavbarButton,
-  MobileNav,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
 import { renderFooter } from "../page";
-import { useState } from "react";
 import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper";
 import { hijau, orange, biru, action, bnw } from "@/lib/assets";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { navItems } from "@/lib/navigations";
+
+import NavbarComponent from "@/components/Navbar/Navbar";
 
 export default function Gallery() {
-  const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const newNavItems = navItems.map((eachNav) => {
-    let link = ``;
-    if (pathname === eachNav.link) {
-      link = `${eachNav.link}`;
-    } else link = `/${eachNav.link}`;
-
-    return {
-      ...eachNav,
-      link,
-    };
-  });
-
-  const renderNavbar = () => {
-    return (
-      <div className="fixed w-full z-10">
-        <Navbar>
-          <NavBody>
-            <NavbarLogo />
-            <NavItems items={newNavItems} />
-            <NavbarButton
-              variant="primary"
-              href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
-              target="blank"
-              rel="noopener"
-            >
-              Book a call
-            </NavbarButton>
-          </NavBody>
-          <MobileNav>
-            <MobileNavHeader>
-              <NavbarLogo />
-              <MobileNavToggle
-                isOpen={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              />
-            </MobileNavHeader>
-
-            <MobileNavMenu
-              isOpen={isMobileMenuOpen}
-              onClose={() => setIsMobileMenuOpen(false)}
-            >
-              {newNavItems.map((item, idx) => (
-                <a
-                  key={`mobile-link-${idx}`}
-                  href={item.link}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="relative text-neutral-600 dark:text-neutral-300"
-                >
-                  <span className="block">{item.name}</span>
-                </a>
-              ))}
-              <div className="flex w-full flex-col gap-4">
-                <NavbarButton
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  variant="primary"
-                  className="w-full"
-                  href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
-                  target="blank"
-                  rel="noopener"
-                >
-                  Book a call
-                </NavbarButton>
-              </div>
-            </MobileNavMenu>
-          </MobileNav>
-        </Navbar>
-      </div>
-    );
-  };
-
   const renderPortfolio = () => {
     const firstGrid = hijau
       .filter((eachImg) => eachImg.key < 6)
@@ -229,7 +145,7 @@ export default function Gallery() {
 
   return (
     <div className="w-full h-full">
-      {renderNavbar()}
+      <NavbarComponent />
       {renderPortfolio()}
       {renderFooter()}
     </div>

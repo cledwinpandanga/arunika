@@ -2,17 +2,6 @@
 
 import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
 import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper";
-import {
-  Navbar,
-  NavBody,
-  NavbarLogo,
-  NavItems,
-  NavbarButton,
-  MobileNav,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
 import { Button } from "@/components/ui/stateful-button";
 import { biru, bnw, hijau, orange } from "@/lib/assets";
 import { getMessage, toCurrency } from "@/lib/utils";
@@ -21,10 +10,9 @@ import { CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import toast, { Toaster } from "react-hot-toast";
-import { navItems } from "@/lib/navigations";
 import { pricing } from "@/lib/pricing";
+import NavbarComponent from "@/components/Navbar/Navbar";
 
 interface EmailProps {
   name: string;
@@ -33,9 +21,6 @@ interface EmailProps {
 }
 
 export default function Home() {
-  const t = useTranslations("home");
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [email, setEmail] = useState<EmailProps>({
     email: "",
     text: "",
@@ -66,64 +51,6 @@ export default function Home() {
 
     window.location.href = mailtoLink;
     setEmail({ name: "", email: "", text: "" });
-  };
-
-  const renderNavbar = () => {
-    return (
-      <div className="fixed w-full z-10">
-        <Navbar>
-          <NavBody>
-            <NavbarLogo />
-            <NavItems items={navItems} />
-            <NavbarButton
-              variant="primary"
-              href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
-              target="blank"
-              rel="noopener"
-            >
-              Book a call
-            </NavbarButton>
-          </NavBody>
-          <MobileNav>
-            <MobileNavHeader>
-              <NavbarLogo />
-              <MobileNavToggle
-                isOpen={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              />
-            </MobileNavHeader>
-
-            <MobileNavMenu
-              isOpen={isMobileMenuOpen}
-              onClose={() => setIsMobileMenuOpen(false)}
-            >
-              {navItems.map((item, idx) => (
-                <a
-                  key={`mobile-link-${idx}`}
-                  href={item.link}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="relative text-neutral-600 dark:text-neutral-300"
-                >
-                  <span className="block">{item.name}</span>
-                </a>
-              ))}
-              <div className="flex w-full flex-col gap-4">
-                <NavbarButton
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  variant="primary"
-                  className="w-full"
-                  href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
-                  target="blank"
-                  rel="noopener"
-                >
-                  Book a call
-                </NavbarButton>
-              </div>
-            </MobileNavMenu>
-          </MobileNav>
-        </Navbar>
-      </div>
-    );
   };
 
   const renderHero = () => {
@@ -431,7 +358,7 @@ export default function Home() {
     return (
       <div className="w-full h-full overflow-hidden">
         <Toaster />
-        {renderNavbar()}
+        <NavbarComponent />
         <LayoutWrapper>
           {renderHero()}
           {renderAbout()}
