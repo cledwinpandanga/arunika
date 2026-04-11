@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Space_Grotesk, Geist, Playfair_Display } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { NextIntlClientProvider } from "next-intl";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -40,9 +41,11 @@ export default function RootLayout({
         playfairDisplay.variable,
       )}
     >
-      <body className={cn("min-h-full flex flex-col font-sans")}>
-        <main>{children}</main>
-      </body>
+      <NextIntlClientProvider>
+        <body className={cn("min-h-full flex flex-col font-sans")}>
+          <main>{children}</main>
+        </body>
+      </NextIntlClientProvider>
     </html>
   );
 }

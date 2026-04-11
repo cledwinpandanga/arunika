@@ -1,0 +1,80 @@
+{
+  "navbar": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "about": "About",
+    "gallery": "Gallery",
+    "button": "Book a Call"
+  },
+  "hero": {
+    "title_1": "Ruang",
+    "title_2": "Arunika",
+    "button": "Contact Us"
+  },
+  "about": {
+    "title": "About Us",
+    "quote": "Photography is an itch that won't go away. No matter how much you scratch it.",
+    "subtitle": "We specialize in creating stunning visuals that resonate emotionally and creatively. Whether it's through the lens of a camera or the framing of a cinematic shot. We strive to bring authenticity and artistry to every project.",
+    "button": "View Our Ideas"
+  },
+  "features": {
+    "title": "Our Ideas"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "button": "Book Now",
+
+    "basic_title": "Basic Plan",
+    "basic_subtitle": "20 Soft Edited Pictures",
+    "basic_features_title": "Features",
+    "basic_features": [
+      "1 Photographer",
+      "Duration: 1 hour",
+      "Locations: 1",
+      "20 Soft Edited Files",
+      "File shared via Google Drive"
+    ],
+
+    "standard_title": "Standard Plan",
+    "standard_subtitle": "All files includes RAW + 35 Edited Pictures",
+    "standard_tag": "Popular Choice",
+    "standard_features_title": "Features",
+    "standard_features": [
+      "2 Photographers",
+      "Duration: 2 hours",
+      "Locations: Up to 2",
+      "35 Edited Files",
+      "All files in JPG format",
+      "Free pose request",
+      "File shared via Google Drive"
+    ],
+
+    "premium_title": "Premium Plan",
+    "premium_subtitle": "Includes RAW + 100 Edited Pictures",
+    "premium_features_title": "Features",
+    "premium_features": [
+      "1 Photographer",
+      "1 Videographer",
+      "Duration: 3 hours",
+      "Unlimited Pictures",
+      "All files in JPG format",
+      "Free pose request",
+      "50 Edited Files",
+      "Customizable / Negotiable Locations"
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a project in mind or need a photographer or filmmaker to bring your vision to life? We'd love to hear from you!",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Message",
+    "button": "Send an Email"
+  },
+  "footer": {
+    "title_1": "Get In Touch",
+    "subtitle_1": "Reach out for inquiries, collaborations, or just to say hello—I'd love to connect with you.",
+    "title_2": "Connect with Us"
+  }
+}

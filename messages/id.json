@@ -1,0 +1,79 @@
+{
+  "navbar": {
+    "features": "Linimasa",
+    "pricing": "Paket",
+    "contact": "Kontak",
+    "about": "Tentang",
+    "gallery": "Galeri",
+    "button": "Order Sekarang"
+  },
+  "hero": {
+    "title_1": "Ruang",
+    "title_2": "Arunika",
+    "button": "Hubungi Kami"
+  },
+  "about": {
+    "title": "Tentang Kami",
+    "quote": "Fotografi bukan sekadar foto saja, namun rasa yang tertangkap dalam momen.",
+    "subtitle": "Kami menghadirkan visual yang elegan dan berkarakter. Setiap frame dirancang dengan detail, rasa, dan sentuhan artistik untuk menciptakan hasil yang berkelas.",
+    "button": "Lihat lebih banyak"
+  },
+  "features": {
+    "title": "Ide Kami"
+  },
+  "pricing": {
+    "title": "Paket Kami",
+    "button": "Pesan Sekarang",
+
+    "basic_title": "Basic",
+    "basic_subtitle": "20 hasil soft edit",
+    "basic_features_title": "Terima Layanan",
+    "basic_features": [
+      "1 fotografer profesional",
+      "Durasi 1 jam",
+      "1 lokasi pilihan",
+      "20 soft foto edit",
+      "Pengiriman via Google Drive"
+    ],
+
+    "standard_title": "Standard",
+    "standard_subtitle": "RAW + 35 hasil edit",
+    "standard_tag": "Paling Dicari",
+    "standard_features_title": "Terima Layanan",
+    "standard_features": [
+      "2 fotografer profesional",
+      "Durasi 2 jam",
+      "Hingga 2 lokasi",
+      "35 foto edit",
+      "Seluruh file format JPG",
+      "Arahan pose eksklusif",
+      "Pengiriman via Google Drive"
+    ],
+
+    "premium_title": "Premium",
+    "premium_subtitle": "RAW + 100 hasil edit",
+    "premium_features_title": "Terima Layanan",
+    "premium_features": [
+      "1 fotografer & 1 videografer",
+      "Durasi 3 jam",
+      "Pengambilan tanpa batas",
+      "Seluruh file format JPG",
+      "Arahan pose eksklusif",
+      "50 foto edit",
+      "Lokasi fleksibel & dapat disesuaikan"
+    ]
+  },
+  "contact": {
+    "title": "Kontak",
+    "subtitle": "Diskusikan kebutuhan visual Kamu bersama kami. Kami siap membantu mewujudkan konsep terbaik Kamu.",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "button": "Kirim Pesan"
+  },
+  "footer": {
+    "title_1": "Hubungi Kami",
+    "subtitle_1": "Untuk kerja sama, proyek, atau pertanyaan lebih lanjut.",
+    "title_2": "Terhubung Dengan Kami"
+  }
+}
