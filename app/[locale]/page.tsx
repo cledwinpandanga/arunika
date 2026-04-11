@@ -11,8 +11,9 @@ import Link from "next/link";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import NavbarComponent from "@/components/Navbar/Navbar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
+import TranslateButton from "@/components/TranslateButton/TranslateButton";
 
 interface EmailProps {
   name: string;
@@ -21,6 +22,8 @@ interface EmailProps {
 }
 
 export default function Home() {
+  const locale = useLocale();
+
   const [email, setEmail] = useState<EmailProps>({
     email: "",
     text: "",
@@ -390,7 +393,7 @@ export default function Home() {
 
   const renderMainSection = () => {
     return (
-      <div className="w-full h-full overflow-hidden">
+      <div className="w-full h-full overflow-hidden relative">
         <Toaster />
         <NavbarComponent />
         <LayoutWrapper>
@@ -401,6 +404,7 @@ export default function Home() {
         </LayoutWrapper>
         {renderCTA()}
         <Footer />
+        <TranslateButton locale={locale} />
       </div>
     );
   };

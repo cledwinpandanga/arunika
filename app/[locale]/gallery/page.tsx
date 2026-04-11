@@ -7,10 +7,13 @@ import Image from "next/image";
 
 import NavbarComponent from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import TranslateButton from "@/components/TranslateButton/TranslateButton";
 
 export default function Gallery() {
   const t = useTranslations("features");
+  const locale = useLocale();
+
   const renderPortfolio = () => {
     const firstGrid = hijau
       .filter((eachImg) => eachImg.key < 6)
@@ -150,6 +153,7 @@ export default function Gallery() {
       <NavbarComponent />
       {renderPortfolio()}
       <Footer />
+      <TranslateButton locale={locale} />
     </div>
   );
 }
