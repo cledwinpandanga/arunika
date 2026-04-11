@@ -73,7 +73,7 @@ export default function NavbarComponent() {
             target="blank"
             rel="noopener"
           >
-            Book a call
+            {t("button")}
           </NavbarButton>
         </NavBody>
         <MobileNav>
@@ -108,7 +108,7 @@ export default function NavbarComponent() {
                 target="blank"
                 rel="noopener"
               >
-                Book a call
+                {t("button")}
               </NavbarButton>
             </div>
           </MobileNavMenu>

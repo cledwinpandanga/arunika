@@ -1,14 +1,16 @@
 "use client";
 
-import { renderFooter } from "../page";
 import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper";
 import { hijau, orange, biru, action, bnw } from "@/lib/assets";
 import Link from "next/link";
 import Image from "next/image";
 
 import NavbarComponent from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import { useTranslations } from "next-intl";
 
 export default function Gallery() {
+  const t = useTranslations("features");
   const renderPortfolio = () => {
     const firstGrid = hijau
       .filter((eachImg) => eachImg.key < 6)
@@ -22,7 +24,7 @@ export default function Gallery() {
     return (
       <div className="w-full h-full flex flex-col p-8 lg:p-20" id="features">
         <div className="w-full h-full flex flex-col items-center">
-          <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
+          <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
         <div className="w-full h-full grid grid-cols-2 lg:grid-cols-5 gap-4 py-30">
@@ -147,7 +149,7 @@ export default function Gallery() {
     <div className="w-full h-full">
       <NavbarComponent />
       {renderPortfolio()}
-      {renderFooter()}
+      <Footer />
     </div>
   );
 }

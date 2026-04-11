@@ -8,8 +8,6 @@
     "button": "Order Sekarang"
   },
   "hero": {
-    "title_1": "Ruang",
-    "title_2": "Arunika",
     "button": "Hubungi Kami"
   },
   "about": {
@@ -19,7 +17,7 @@
     "button": "Lihat lebih banyak"
   },
   "features": {
-    "title": "Ide Kami"
+    "title": "Visual & Ide"
   },
   "pricing": {
     "title": "Paket Kami",
@@ -69,7 +67,7 @@
     "name": "Nama",
     "email": "Email",
     "message": "Pesan",
-    "button": "Kirim Pesan"
+    "button": "Kirim Email"
   },
   "footer": {
     "title_1": "Hubungi Kami",

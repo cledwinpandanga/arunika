@@ -5,14 +5,14 @@ import TransitionWrapper from "@/components/TransitionWrapper/TransitionWrapper"
 import { Button } from "@/components/ui/stateful-button";
 import { biru, bnw, hijau, orange } from "@/lib/assets";
 import { getMessage, toCurrency } from "@/lib/utils";
-import { IconBrandInstagram } from "@tabler/icons-react";
 import { CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { pricing } from "@/lib/pricing";
 import NavbarComponent from "@/components/Navbar/Navbar";
+import { useTranslations } from "next-intl";
+import Footer from "@/components/Footer/Footer";
 
 interface EmailProps {
   name: string;
@@ -54,6 +54,7 @@ export default function Home() {
   };
 
   const renderHero = () => {
+    const t = useTranslations("hero");
     return (
       <div
         className="w-full h-full lg:h-[calc(100vh-54px)] flex flex-col gap-4 lg:flex-row relative"
@@ -88,8 +89,8 @@ export default function Home() {
             rel="noopener noreferrer"
             className="w-full"
           >
-            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
-              CONTACT US
+            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2 uppercase">
+              {t("button")}
             </Button>
           </Link>
         </TransitionWrapper>
@@ -99,6 +100,7 @@ export default function Home() {
   };
 
   const renderAbout = () => {
+    const t = useTranslations("about");
     return (
       <div
         className="w-full min-h-[80dvh] h-full flex flex-col lg:flex-row gap-20 lg:gap-0 lg:items-center"
@@ -122,21 +124,15 @@ export default function Home() {
           duration={1.5}
           className="w-full lg:w-1/2 h-full flex flex-col items-center lg:items-start lg:justify-center"
         >
-          <h1 className="text-6xl font-bold font-playfair">About Us</h1>
+          <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
           <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
           <p className="text-2xl mt-8 font-playfair text-center">
-            "Photography is an itch that won't go away. No matter how much you
-            scratch it." <br />~ Dara McGrath
+            {t("quote")} <br />~ Dara McGrath
           </p>
-          <p className="text-lg mt-8 lg:text-justify">
-            We specialize in creating stunning visuals that resonate emotionally
-            and creatively. Whether it's through the lens of a camera or the
-            framing of a cinematic shot. We strive to bring authenticity and
-            artistry to every project.
-          </p>
+          <p className="text-lg mt-8 lg:text-justify">{t("subtitle")}</p>
           <Link href="#features" className="w-full">
             <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
-              View Our Ideas
+              {t("button")}
             </Button>
           </Link>
         </TransitionWrapper>
@@ -145,6 +141,8 @@ export default function Home() {
   };
 
   const renderPortfolio = () => {
+    const t = useTranslations("features");
+
     const firstGrid = hijau
       .filter((eachImg) => eachImg.key <= 7)
       .map((eachImage) => eachImage);
@@ -156,7 +154,7 @@ export default function Home() {
     return (
       <div className="w-full h-full flex flex-col py-20" id="features">
         <div className="w-full h-full flex flex-col items-center">
-          <h1 className="text-6xl font-bold font-playfair">Our Ideas</h1>
+          <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
         <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-30">
@@ -256,12 +254,50 @@ export default function Home() {
   };
 
   const renderPricing = () => {
+    const t = useTranslations("pricing");
+    const pricing = [
+      {
+        text: t("basic_title"),
+        color: "white",
+        price: 500000,
+        subtitle: t("basic_subtitle"),
+        features: t.raw("basic_features").map((item: string) => ({
+          icon: "yes",
+          text: item,
+        })),
+        bookType: "basic",
+      },
+      {
+        text: t("standard_title"),
+        color: "black",
+        price: 800000,
+        subtitle: t("standard_subtitle"),
+        tag: t("standard_tag"),
+        features: t.raw("standard_features").map((item: string) => ({
+          icon: "yes",
+          text: item,
+        })),
+        bookType: "standard",
+      },
+      {
+        text: t("premium_title"),
+        color: "white",
+        price: 1200000,
+        subtitle: t("premium_subtitle"),
+        features: t.raw("premium_features").map((item: string) => ({
+          icon: "yes",
+          text: item,
+        })),
+        bookType: "premium",
+      },
+    ];
+
     return (
       <div
         className="w-full h-full flex flex-col items-center mb-40"
         id="pricing"
       >
-        <h1 className="text-6xl font-bold font-playfair">Pricing</h1>
+        <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
         <div className="w-full lg:w-1/8 mb-20 mt-2 pt-0.5 bg-black" />
         <div className="w-full overflow-x-auto overflow-y-hidden p-4">
           <div className="grid grid-cols-3 gap-4 min-w-270">
@@ -299,35 +335,33 @@ export default function Home() {
   };
 
   const renderCTA = () => {
+    const t = useTranslations("contact");
     return (
       <div className="w-full h-full bg-zinc-100" id="contact">
         <div className="w-full max-w-6xl mx-auto p-8">
           <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div className="flex flex-col justify-center">
-              <h1 className="text-4xl font-bold font-playfair">Contact Me</h1>
+              <h1 className="text-4xl font-bold font-playfair">{t("title")}</h1>
               <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
-              <p className="text-lg mt-8">
-                Have a project in mind or need a photographer or filmmaker to
-                bring your vision to life? We'd love to hear from you!
-              </p>
+              <p className="text-lg mt-8">{t("subtitle")}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <input
                   className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder="Your Name"
+                  placeholder={t("name")}
                   type="text"
                   value={email?.name}
                   onChange={handleUpdateEmail("name")}
                 />
                 <input
                   className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder="Your Email"
+                  placeholder={t("email")}
                   type="email"
                   value={email?.email}
                   onChange={handleUpdateEmail("email")}
                 />
                 <input
                   className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder="Message"
+                  placeholder={t("message")}
                   type="text"
                   value={email?.text}
                   onChange={handleUpdateEmail("text")}
@@ -338,7 +372,7 @@ export default function Home() {
                 disabled={!email.email || !email.name || !email.text}
                 className="rounded-none mt-8 bg-black hover:ring-black p-4 w-full "
               >
-                Send an Email
+                {t("button")}
               </Button>
             </div>
             <Image
@@ -366,55 +400,13 @@ export default function Home() {
           {renderPricing()}
         </LayoutWrapper>
         {renderCTA()}
-        {renderFooter()}
+        <Footer />
       </div>
     );
   };
 
   return renderMainSection();
 }
-
-export const renderFooter = () => {
-  return (
-    <>
-      <div className="bg-black text-white w-full h-full p-8 lg:p-20 relative mt-80">
-        <div className="max-w-6xl mx-auto h-full flex flex-col lg:flex-row gap-10 lg:items-center">
-          <div className="w-full lg:w-2/3 min-h-full grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div className="col-span-1">
-              <h1 className="text-2xl font-bold font-playfair">Get In Touch</h1>
-              <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-white" />
-              <p className="text-lg mt-8 lg:text-justify">
-                Reach out for inquiries, collaborations, or just to say
-                hello—I'd love to connect with you.
-              </p>
-            </div>
-            <div className="col-span-1">
-              <h1 className="text-2xl font-bold font-playfair">
-                Connect With Us
-              </h1>
-              <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-white" />
-              <Link href={"https://www.instagram.com/ruang.arunika_/"}>
-                <IconBrandInstagram className="size-10 mt-4" />
-              </Link>
-            </div>
-          </div>
-          <div className="hidden lg:block lg:w-1/3 h-full absolute right-0 -top-21 drop-shadow-2xl">
-            <Image
-              width={800}
-              height={800}
-              src={"/orange5.jpg"}
-              alt=""
-              className="h-102 w-90 rounded-t-xl"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="w-full p-4 bg-zinc-200 text-black text-center font-sans">
-        Copyright © 2026 Ruang Arunika. All rights reserved.
-      </div>
-    </>
-  );
-};
 
 const renderPricingCard = ({
   tag,
@@ -433,6 +425,7 @@ const renderPricingCard = ({
   features: { icon: string; text: string }[];
   bookType: string;
 }) => {
+  const t = useTranslations("pricing");
   const waLink = `https://wa.me/6282147060726?text=${encodeURIComponent(getMessage(bookType))}`;
 
   return (
@@ -459,7 +452,7 @@ const renderPricingCard = ({
               : "bg-black text-white hover:ring-none"
           } w-full my-4`}
         >
-          Book Now
+          {t("button")}
         </Button>
       </Link>
       <hr className="w-full mb-4" />
