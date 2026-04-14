@@ -8,12 +8,13 @@ import { getMessage, toCurrency } from "@/lib/utils";
 import { CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import NavbarComponent from "@/components/Navbar/Navbar";
 import { useLocale, useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
 import TranslateButton from "@/components/TranslateButton/TranslateButton";
+import { useForm } from "react-hook-form";
 
 interface EmailProps {
   name: string;
@@ -23,37 +24,27 @@ interface EmailProps {
 
 export default function Home() {
   const locale = useLocale();
-
-  const [email, setEmail] = useState<EmailProps>({
-    email: "",
-    text: "",
-    name: "",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange",
   });
 
-  const handleUpdateEmail =
-    (type: "email" | "text" | "name") =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-
-      setEmail((prev: any) => ({
-        ...prev,
-        [type]: value,
-      }));
-    };
-
-  const handleSendEmail = () => {
+  const onSubmit = (data: any) => {
     toast.success("Email sent.");
     const subject = "Booking";
     const body = `Hi team Ruang Arunika! Saya,
-    Nama: ${email.name}
-    Email: ${email.email}
-    Pesan: ${email.text}`;
+    Nama: ${data.name}
+    Email: ${data.email}
+    Pesan: ${data.text}`;
     const mailtoLink = `mailto:ruangarunika@gmail.com?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
-
     window.location.href = mailtoLink;
-    setEmail({ name: "", email: "", text: "" });
+    reset();
   };
 
   const renderHero = () => {
@@ -70,7 +61,14 @@ export default function Home() {
           alt=""
           fetchPriority="high"
           loading="lazy"
-          className="absolute -top-13.5 lg:right-0 h-120 lg:h-[calc(100dvh-54px)] -z-10 w-full lg:w-138"
+          className="
+              absolute -top-13.5 
+              sm:left-1/2 sm:-translate-x-1/2 
+              lg:right-0 lg:left-auto lg:translate-x-0
+              h-120 sm:w-120 
+              lg:h-[calc(100dvh-54px)] 
+              -z-10 w-full lg:w-138
+            "
         />
         <TransitionWrapper
           className="w-full order-1 lg:order-0 lg:w-1/2 min-h-full text-wrap break-all flex flex-col justify-center items-center lg:items-start"
@@ -90,11 +88,11 @@ export default function Home() {
             href="https://wa.me/6282147060726?text=Hi%20Min%21%20Saya%20mau%20booking%20nih%21"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full"
+            className="w-full h-fit"
           >
-            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2 uppercase">
+            <button className="cursor-pointer rounded-none mt-4 text-white bg-black hover:ring-black ring-1 p-4 w-full lg:w-1/2 uppercase">
               {t("button")}
-            </Button>
+            </button>
           </Link>
         </TransitionWrapper>
         <div className="w-full h-full min-h-120 order-0 lg:order-1 lg:w-1/2 " />
@@ -134,9 +132,9 @@ export default function Home() {
           </p>
           <p className="text-lg mt-8 lg:text-justify">{t("subtitle")}</p>
           <Link href="#features" className="w-full">
-            <Button className="rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
+            <button className="text-white cursor-pointer rounded-none mt-4 bg-black hover:ring-black p-4 w-full lg:w-1/2">
               {t("button")}
-            </Button>
+            </button>
           </Link>
         </TransitionWrapper>
       </div>
@@ -160,7 +158,7 @@ export default function Home() {
           <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
           <div className="w-full lg:w-1/6 mt-4 pt-0.5 bg-black" />
         </div>
-        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-30">
+        <div className="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-4 py-30">
           <div className="flex flex-col gap-4 col-span-1 drop-shadow-2xl">
             {firstGrid.map((eachImage) => {
               return (
@@ -345,39 +343,75 @@ export default function Home() {
           <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-10">
             <div className="flex flex-col justify-center">
               <h1 className="text-4xl font-bold font-playfair">{t("title")}</h1>
+
               <div className="w-full lg:w-1/3 mt-4 pt-0.5 bg-black" />
+
               <p className="text-lg mt-8">{t("subtitle")}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <input
-                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder={t("name")}
-                  type="text"
-                  value={email?.name}
-                  onChange={handleUpdateEmail("name")}
-                />
-                <input
-                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder={t("email")}
-                  type="email"
-                  value={email?.email}
-                  onChange={handleUpdateEmail("email")}
-                />
-                <input
-                  className="w-full h-10 p-2 border-b border-black hover:outline-none focus:outline-none mt-4"
-                  placeholder={t("message")}
-                  type="text"
-                  value={email?.text}
-                  onChange={handleUpdateEmail("text")}
-                />
-              </div>
-              <Button
-                onClick={handleSendEmail}
-                disabled={!email.email || !email.name || !email.text}
-                className="rounded-none mt-8 bg-black hover:ring-black p-4 w-full "
+
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="grid grid-cols-2 gap-6 mt-4"
+              >
+                <div>
+                  <input
+                    className="w-full h-10 p-2 border-b border-black focus:outline-none"
+                    placeholder={t("name")}
+                    {...register("name", {
+                      required: "Name is required",
+                    })}
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.name?.message as string}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <input
+                    className="w-full h-10 p-2 border-b border-black focus:outline-none"
+                    placeholder={t("email")}
+                    type="email"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^\S+@\S+\.\S+$/,
+                        message: "Invalid email",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email?.message as String}
+                    </p>
+                  )}
+                </div>
+
+                <div className="col-span-2">
+                  <textarea
+                    className="w-full p-2 border-b border-black focus:outline-none"
+                    placeholder={t("message")}
+                    rows={4}
+                    {...register("text", {
+                      required: "Message is required",
+                    })}
+                  />
+                  {errors.text && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.text.message as String}
+                    </p>
+                  )}
+                </div>
+              </form>
+              <button
+                type="submit"
+                disabled={!isValid}
+                className={`text-white rounded-none mt-4 ${!isValid ? "bg-black/60 cursor-not-allowed" : "bg-black"} p-4 w-full hover:ring-none`}
               >
                 {t("button")}
-              </Button>
+              </button>
             </div>
+
             <Image
               width={800}
               height={800}
@@ -449,15 +483,15 @@ const renderPricingCard = ({
       </h1>
       <p className={`text-base text-start`}>{subtitle}</p>
       <Link href={waLink} rel="noopener" target="blank" className="w-full">
-        <Button
+        <button
           className={`${
             color === "black"
               ? "bg-white text-black hover:ring-none"
               : "bg-black text-white hover:ring-none"
-          } w-full my-4`}
+          } w-full my-4 p-2 rounded-full cursor-pointer`}
         >
           {t("button")}
-        </Button>
+        </button>
       </Link>
       <hr className="w-full mb-4" />
       <p className={`text-base font-semibold`}>Features</p>

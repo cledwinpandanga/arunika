@@ -4,9 +4,7 @@ import Image from "next/image";
 interface TranslateButtonProps {
   locale: string;
 }
-
-function TranslateButton({ locale }: TranslateButtonProps) {
-  const router = useRouter();
+export default function TranslateButton({ locale }: TranslateButtonProps) {
   const pathname = usePathname();
 
   const isEnglish = locale === "en";
@@ -21,8 +19,7 @@ function TranslateButton({ locale }: TranslateButtonProps) {
     }
 
     const newPath = `/${nextLocale}/${segments.join("/")}`;
-
-    router.replace(newPath);
+    window.location.replace(newPath);
   };
 
   const flag = isEnglish
@@ -42,5 +39,3 @@ function TranslateButton({ locale }: TranslateButtonProps) {
     />
   );
 }
-
-export default TranslateButton;
