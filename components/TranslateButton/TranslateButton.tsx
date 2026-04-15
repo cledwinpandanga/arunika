@@ -32,7 +32,7 @@ export default function TranslateButton({ locale }: TranslateButtonProps) {
       width={1000}
       height={1000}
       src={flag}
-      className={`size-20 rounded-full fixed bottom-8 right-8 drop-shadow-2xl ${
+      className={`size-14 lg:size-20 rounded-full fixed bottom-8 right-8 drop-shadow-2xl ${
         isEnglish ? "p-1.5" : ""
       } cursor-pointer`}
       onClick={handleChangeLanguage}
