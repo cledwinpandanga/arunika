@@ -22,44 +22,199 @@
   "pricing": {
     "title": "Pricing",
     "button": "Book Now",
+    "items": [
+      {
+        "title": "Wedding",
+        "imageUrl": "/Wedding.jpg",
+        "bookType": "wedding",
+        "plans": [
+          {
+            "type": "Reception Package",
+            "price": 2500000,
+            "subtitle": "60 Edited Photos + Cinematic Video",
+            "features": [
+              "1 Photographer + 1 Videographer",
+              "Duration ± 6 Hours",
+              "Include Morning Express",
+              "All Files (High Resolution)",
+              "60 Edited Photos",
+              "Cinematic Video 2-3 Minutes",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Full Day Package",
+            "price": 6000000,
+            "subtitle": "100 Edited Photos + Album",
+            "features": [
+              "2 Photographers + 1 Videographer",
+              "Morning Express",
+              "Akad + Reception",
+              "Full Day Coverage",
+              "All Files (High Resolution)",
+              "100 Edited Photos",
+              "Cinematic Video 2-3 Minutes",
+              "20 Pages Collage Album",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
 
-    "basic_title": "Basic Plan",
-    "basic_subtitle": "20 Soft Edited Pictures",
-    "basic_features_title": "Features",
-    "basic_features": [
-      "1 Photographer",
-      "Duration: 1 hour",
-      "Locations: 1",
-      "20 Soft Edited Files",
-      "File shared via Google Drive"
-    ],
+      {
+        "title": "Prewedding",
+        "imageUrl": "/Prewedding.jpg",
+        "bookType": "prewedding",
+        "plans": [
+          {
+            "type": "2 Day Package",
+            "price": 5000000,
+            "subtitle": "60 Edited Photos + Cinematic Video",
+            "features": [
+              "1 Photographer + 1 Videographer",
+              "Duration ± 6 Hours",
+              "Max 4 Locations",
+              "All Files (High Resolution)",
+              "60 Edited Photos",
+              "Cinematic Video 2-3 Minutes",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "3 Day Package",
+            "price": 8500000,
+            "subtitle": "100 Edited Photos + Album",
+            "features": [
+              "2 Photographers + 1 Videographer",
+              "Max 7 Locations",
+              "Duration ± 12 Hours",
+              "All Files (High Resolution)",
+              "100 Edited Photos",
+              "Cinematic Video 2-3 Minutes",
+              "20 Pages Collage Album",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
 
-    "standard_title": "Standard Plan",
-    "standard_subtitle": "All files includes RAW + 35 Edited Pictures",
-    "standard_tag": "Popular Choice",
-    "standard_features_title": "Features",
-    "standard_features": [
-      "2 Photographers",
-      "Duration: 2 hours",
-      "Locations: Up to 2",
-      "35 Edited Files",
-      "All files in JPG format",
-      "Free pose request",
-      "File shared via Google Drive"
-    ],
+      {
+        "title": "Graduation",
+        "imageUrl": "/Graduation.jpg",
+        "bookType": "graduation",
+        "plans": [
+          {
+            "type": "Basic Plan",
+            "price": 500000,
+            "subtitle": "20 Soft Edited Photos",
+            "features": [
+              "1 Photographer",
+              "Duration 1 Hour",
+              "1 Location",
+              "20 Soft Edited Photos",
+              "File shared via Google Drive"
+            ]
+          },
+          {
+            "type": "Standard Plan",
+            "price": 800000,
+            "subtitle": "35 Edited Photos + All JPG Files",
+            "tag": "Popular Choice",
+            "features": [
+              "1 Photographer",
+              "Duration 2 Hours",
+              "Up to 2 Locations",
+              "35 Edited Photos",
+              "All files in JPG format",
+              "Free pose direction",
+              "File shared via Google Drive"
+            ]
+          },
+          {
+            "type": "Premium Plan",
+            "price": 1200000,
+            "subtitle": "50 Edited Photos + Cinematic Video",
+            "features": [
+              "1 Photographer + 1 Videographer",
+              "Duration 3 Hours",
+              "Unlimited Photos",
+              "All files in JPG format",
+              "Free pose direction",
+              "50 Edited Photos",
+              "Cinematic Video 1-2 Minutes",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
 
-    "premium_title": "Premium Plan",
-    "premium_subtitle": "Includes RAW + 100 Edited Pictures",
-    "premium_features_title": "Features",
-    "premium_features": [
-      "1 Photographer",
-      "1 Videographer",
-      "Duration: 3 hours",
-      "Unlimited Pictures",
-      "All files in JPG format",
-      "Free pose request",
-      "50 Edited Files",
-      "Customizable / Negotiable Locations"
+      {
+        "title": "Corporate",
+        "imageUrl": "/Corporate.jpg",
+        "bookType": "corporate",
+        "plans": [
+          {
+            "type": "Half Day Package",
+            "price": 2000000,
+            "subtitle": "30 Edited Photos + Event Reels",
+            "features": [
+              "Duration 4 Hours",
+              "1 Photographer",
+              "All Files (High Resolution)",
+              "30 Edited Photos",
+              "1 Minute Event Highlight Reels",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Full Day Package",
+            "price": 3500000,
+            "subtitle": "50 Edited Photos + Event Reels",
+            "features": [
+              "Duration 8 Hours",
+              "1 Photographer",
+              "All Files (High Resolution)",
+              "50 Edited Photos",
+              "1 Minute Event Highlight Reels",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Corporate Package",
+            "price": 5000000,
+            "subtitle": "80 Edited Photos + Drone Documentation",
+            "features": [
+              "1 Photographer + 1 Videographer",
+              "Duration 8 Hours",
+              "All Files (High Resolution)",
+              "80 Edited Photos",
+              "Drone Documentation (Outdoor)",
+              "2-3 Minutes Highlight Event Video",
+              "File shared via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
+
+      {
+        "title": "Custom",
+        "imageUrl": "/Custom.jpg",
+        "bookType": "custom",
+        "plans": [
+          {
+            "type": "Custom Documentation Package",
+            "price": 1500000,
+            "subtitle": "Flexible Photo & Video Coverage",
+            "features": [
+              "Custom concept based on client request",
+              "Flexible duration",
+              "Flexible photographer / videographer crew",
+              "All Files (High Resolution)",
+              "Custom photo & video output"
+            ]
+          }
+        ]
+      }
     ]
   },
   "contact": {

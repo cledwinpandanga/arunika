@@ -23,42 +23,199 @@
     "title": "Paket Kami",
     "button": "Pesan Sekarang",
 
-    "basic_title": "Basic",
-    "basic_subtitle": "20 hasil soft edit",
-    "basic_features_title": "Terima Layanan",
-    "basic_features": [
-      "1 fotografer profesional",
-      "Durasi 1 jam",
-      "1 lokasi pilihan",
-      "20 soft foto edit",
-      "Pengiriman via Google Drive"
-    ],
+    "items": [
+      {
+        "title": "Wedding",
+        "imageUrl": "/Wedding.jpg",
+        "bookType": "wedding",
+        "plans": [
+          {
+            "type": "Paket Resepsi",
+            "price": 2500000,
+            "subtitle": "60 Foto Edit + Video Cinematic",
+            "features": [
+              "1 Fotografer + 1 Videografer",
+              "Durasi ± 6 Jam",
+              "Include Morning Express",
+              "Semua File (High Resolution)",
+              "60 Foto Edit",
+              "Video Cinematic 2-3 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Paket Full Day",
+            "price": 6000000,
+            "subtitle": "100 Foto Edit + Album Kolase",
+            "features": [
+              "2 Fotografer + 1 Videografer",
+              "Morning Express",
+              "Akad + Resepsi",
+              "Durasi Full Day",
+              "Semua File (High Resolution)",
+              "100 Foto Edit",
+              "Video Cinematic 2-3 Menit",
+              "Album Kolase 20 Halaman",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
 
-    "standard_title": "Standard",
-    "standard_subtitle": "RAW + 35 hasil edit",
-    "standard_tag": "Paling Dicari",
-    "standard_features_title": "Terima Layanan",
-    "standard_features": [
-      "2 fotografer profesional",
-      "Durasi 2 jam",
-      "Hingga 2 lokasi",
-      "35 foto edit",
-      "Seluruh file format JPG",
-      "Arahan pose eksklusif",
-      "Pengiriman via Google Drive"
-    ],
+      {
+        "title": "Prewedding",
+        "imageUrl": "/Prewedding.jpg",
+        "bookType": "prewedding",
+        "plans": [
+          {
+            "type": "Paket 2 Day",
+            "price": 5000000,
+            "subtitle": "60 Foto Edit + Video Cinematic",
+            "features": [
+              "1 Fotografer + 1 Videografer",
+              "Durasi ± 6 Jam",
+              "Max 4 Lokasi",
+              "Semua File (High Resolution)",
+              "60 Foto Edit",
+              "Video Cinematic 2-3 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Paket 3 Day",
+            "price": 8500000,
+            "subtitle": "100 Foto Edit + Album Kolase",
+            "features": [
+              "2 Fotografer + 1 Videografer",
+              "Max 7 Lokasi",
+              "Durasi ± 12 Jam",
+              "Semua File (High Resolution)",
+              "100 Foto Edit",
+              "Video Cinematic 2-3 Menit",
+              "Album Kolase 20 Halaman",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
 
-    "premium_title": "Premium",
-    "premium_subtitle": "RAW + 100 hasil edit",
-    "premium_features_title": "Terima Layanan",
-    "premium_features": [
-      "1 fotografer & 1 videografer",
-      "Durasi 3 jam",
-      "Pengambilan tanpa batas",
-      "Seluruh file format JPG",
-      "Arahan pose eksklusif",
-      "50 foto edit",
-      "Lokasi fleksibel & dapat disesuaikan"
+      {
+        "title": "Graduation",
+        "imageUrl": "/Graduation.jpg",
+        "bookType": "graduation",
+        "plans": [
+          {
+            "type": "Paket Basic",
+            "price": 500000,
+            "subtitle": "20 Foto Soft Edit",
+            "features": [
+              "1 Fotografer",
+              "Durasi 1 Jam",
+              "1 Lokasi",
+              "20 Foto Soft Edit",
+              "File dikirim via Google Drive"
+            ]
+          },
+          {
+            "type": "Paket Standard",
+            "price": 800000,
+            "subtitle": "35 Foto Edit + Semua File JPG",
+            "tag": "Paling Dicari",
+            "features": [
+              "1 Fotografer",
+              "Durasi 2 Jam",
+              "Hingga 2 Lokasi",
+              "35 Foto Edit",
+              "Semua file format JPG",
+              "Arahan pose gratis",
+              "File dikirim via Google Drive"
+            ]
+          },
+          {
+            "type": "Paket Premium",
+            "price": 1200000,
+            "subtitle": "50 Foto Edit + Video Cinematic",
+            "features": [
+              "1 Fotografer + 1 Videografer",
+              "Durasi 3 Jam",
+              "Unlimited Foto",
+              "Semua file format JPG",
+              "Arahan pose gratis",
+              "50 Foto Edit",
+              "Video Cinematic 1-2 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
+
+      {
+        "title": "Corporate",
+        "imageUrl": "/Corporate.jpg",
+        "bookType": "corporate",
+        "plans": [
+          {
+            "type": "Paket Half Day",
+            "price": 2000000,
+            "subtitle": "30 Foto Edit + Reels Event",
+            "features": [
+              "Durasi 4 Jam",
+              "1 Fotografer",
+              "Semua File (High Resolution)",
+              "30 Foto Edit",
+              "Reels Highlight Event 1 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Paket Full Day",
+            "price": 3500000,
+            "subtitle": "50 Foto Edit + Reels Event",
+            "features": [
+              "Durasi 8 Jam",
+              "1 Fotografer",
+              "Semua File (High Resolution)",
+              "50 Foto Edit",
+              "Reels Highlight Event 1 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          },
+          {
+            "type": "Paket Corporate",
+            "price": 5000000,
+            "subtitle": "80 Foto Edit + Dokumentasi Drone",
+            "features": [
+              "1 Fotografer + 1 Videografer",
+              "Durasi 8 Jam",
+              "Semua File (High Resolution)",
+              "80 Foto Edit",
+              "Dokumentasi Drone (Outdoor)",
+              "Video Dokumentasi Highlight Event 2-3 Menit",
+              "File dikirim via Flashdisk / Google Drive"
+            ]
+          }
+        ]
+      },
+
+      {
+        "title": "Custom",
+        "imageUrl": "/Custom.jpg",
+        "bookType": "custom",
+        "plans": [
+          {
+            "type": "Paket Dokumentasi Bebas",
+            "price": 1500000,
+            "subtitle": "Dokumentasi Fleksibel Sesuai Kebutuhan",
+            "features": [
+              "Konsep sesuai request klien",
+              "Durasi fleksibel",
+              "Jumlah fotografer / videografer menyesuaikan kebutuhan",
+              "Semua File (High Resolution)",
+              "Output foto & video menyesuaikan paket"
+            ]
+          }
+        ]
+      }
     ]
   },
   "contact": {

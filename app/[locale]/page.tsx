@@ -256,42 +256,7 @@ export default function Home() {
 
   const renderPricing = () => {
     const t = useTranslations("pricing");
-    const pricing = [
-      {
-        text: t("basic_title"),
-        color: "white",
-        price: 500000,
-        subtitle: t("basic_subtitle"),
-        features: t.raw("basic_features").map((item: string) => ({
-          icon: "yes",
-          text: item,
-        })),
-        bookType: "basic",
-      },
-      {
-        text: t("standard_title"),
-        color: "black",
-        price: 800000,
-        subtitle: t("standard_subtitle"),
-        tag: t("standard_tag"),
-        features: t.raw("standard_features").map((item: string) => ({
-          icon: "yes",
-          text: item,
-        })),
-        bookType: "standard",
-      },
-      {
-        text: t("premium_title"),
-        color: "white",
-        price: 1200000,
-        subtitle: t("premium_subtitle"),
-        features: t.raw("premium_features").map((item: string) => ({
-          icon: "yes",
-          text: item,
-        })),
-        bookType: "premium",
-      },
-    ];
+    const pricing = t.raw("items");
 
     return (
       <div
@@ -301,31 +266,22 @@ export default function Home() {
         <h1 className="text-6xl font-bold font-playfair">{t("title")}</h1>
         <div className="w-full lg:w-1/8 mb-20 mt-2 pt-0.5 bg-black" />
         <div className="w-full overflow-x-auto overflow-y-hidden p-4">
-          <div className="grid grid-cols-3 gap-4 min-w-270">
-            {pricing.map((eachPricing) => {
-              const { color, price, text, subtitle, features, tag, bookType } =
-                eachPricing;
+          <div className="flex gap-4 min-w-fit">
+            {pricing.map((eachPricing: any, index: number) => {
               return (
-                <div key={price} className="w-full">
-                  {renderPricingCard({
-                    color,
-                    price,
-                    subtitle,
-                    text,
-                    tag,
-                    features,
-                    bookType,
-                  })}
+                <div key={index} className="w-full min-w-86">
+                  <PricingCard {...eachPricing} />
                 </div>
               );
             })}
           </div>
         </div>
+
         <Link
           href={"/price-list/ruang-arunika-price-list.pdf"}
           className="w-full h-full"
           rel="noopener"
-          target="blank"
+          target="_blank"
         >
           <Button className="mt-20 w-full bg-black rounded-none hover:ring-none">
             View PDF
@@ -446,71 +402,125 @@ export default function Home() {
   return renderMainSection();
 }
 
-const renderPricingCard = ({
-  tag,
-  text,
-  subtitle,
-  price,
-  color,
-  features,
+const PricingCard = ({
+  title,
+  imageUrl,
   bookType,
+  plans,
 }: {
-  tag?: string;
-  text: string;
-  subtitle: string;
-  price: number;
-  color: string;
-  features: { icon: string; text: string }[];
+  title: string;
+  imageUrl: string;
   bookType: string;
+  plans: {
+    type: string;
+    price: number;
+    subtitle: string;
+    tag?: string;
+    features: string[];
+  }[];
 }) => {
   const t = useTranslations("pricing");
-  const waLink = `https://wa.me/6282147060726?text=${encodeURIComponent(getMessage(bookType))}`;
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div
-      className={`drop-shadow-none
-  hover:drop-shadow-[0_10px_15px_rgba(251,191,36,0.5)]
-  transition-all duration-300 col-span-1 border px-4 py-8 h-full w-full text-center text-${color === "white" ? "black" : "white"} bg-${color} rounded-2xl relative flex flex-col items-start gap-2`}
+      style={{ backgroundImage: `url("${imageUrl}")` }}
+      className="group relative col-span-1 min-h-137.5 w-full overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat border border-zinc-200/50"
     >
-      <p className={`text-xl font-semibold my-8`}>{text}</p>
-      {tag && (
-        <div className="w-fit h-auto p-2 bg-linear-to-r from-amber-600 via-amber-500 to-amber-400 rounded-xl absolute -top-4 right-10 z-0 text-sm">
-          {tag}
-        </div>
-      )}
-      <h1 className={`text-4xl font-bold font-sans text-center`}>
-        IDR {toCurrency(price)}
-      </h1>
-      <p className={`text-base text-start`}>{subtitle}</p>
-      <Link href={waLink} rel="noopener" target="blank" className="w-full">
+      {/* Center Title */}
+      <div
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300
+        ${
+          showDetails ? "opacity-0 pointer-events-none scale-90" : "opacity-100"
+        }`}
+      >
         <button
-          className={`${
-            color === "black"
-              ? "bg-white text-black hover:ring-none"
-              : "bg-black text-white hover:ring-none"
-          } w-full my-4 p-2 rounded-full cursor-pointer`}
+          onClick={() => setShowDetails(true)}
+          className="text-white font-playfair font-semibold text-4xl drop-shadow-2xl whitespace-nowrap"
         >
-          {t("button")}
+          {title.toUpperCase()}
+
+          <span className="text-[10px] font-sans block md:hidden rounded-full bg-amber-600 mt-2 p-2">
+            Click here to view details
+          </span>
         </button>
-      </Link>
-      <hr className="w-full mb-4" />
-      <p className={`text-base font-semibold`}>Features</p>
-      <div className="mt-4 w-full">
-        {features?.map((eachFeatures, index) => {
-          return (
-            <div
-              key={index}
-              className="w-full flex gap-2 items-start justify-start h-fit py-1"
-            >
-              <CheckCircleIcon className="size-4 text-white bg-green-800 rounded-full mt-0.5" />
-              {/* {eachFeatures.icon === "yes" ? (
-              ) : (
-                <XCircleIcon className="size-4 bg-zinc-600 text-white rounded-full mt-0.5" />
-              )} */}
-              <p className="text-start text-sm">{eachFeatures.text}</p>
-            </div>
-          );
-        })}
+      </div>
+
+      {/* Overlay */}
+      <div
+        className={`
+        absolute inset-0 bg-black/90 backdrop-blur-xs p-6 transition-all duration-500 overflow-y-auto
+        ${
+          showDetails
+            ? "opacity-100 visible"
+            : "opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible"
+        }
+      `}
+      >
+        {/* Close Mobile */}
+        <button
+          type="button"
+          onClick={() => setShowDetails(false)}
+          className="absolute top-4 z-30 right-4 text-xs font-bold md:hidden border px-3 py-1.5 rounded-full border-white text-white"
+        >
+          ✕ Close
+        </button>
+
+        <div className="flex flex-col gap-8">
+          {plans.map((plan, index) => {
+            const waLink = `https://wa.me/6282147060726?text=${encodeURIComponent(
+              getMessage(`${bookType}-${plan.type}`),
+            )}`;
+
+            return (
+              <div
+                key={index}
+                className="rounded-2xl p-4 bg-white/5 backdrop-blur-md"
+              >
+                {/* Tag */}
+                {plan.tag && (
+                  <div className="w-fit mb-4 px-3 py-1 text-xs rounded-full bg-amber-500 text-black font-semibold">
+                    {plan.tag}
+                  </div>
+                )}
+
+                <p className="text-xl text-white font-semibold">{plan.type}</p>
+
+                <h2 className="text-3xl text-white font-bold mt-2">
+                  IDR {toCurrency(plan.price)}
+                </h2>
+
+                <p className="text-sm text-zinc-300 mt-2">{plan.subtitle}</p>
+
+                <Link
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener"
+                  className="block w-full"
+                >
+                  <button className="w-full bg-white text-black rounded-full p-2 mt-4 cursor-pointer hover:opacity-90">
+                    {t("button")}
+                  </button>
+                </Link>
+
+                <div className="mt-4 flex flex-col gap-2">
+                  {plan.features.map(
+                    (feature: string, featureIndex: number) => (
+                      <div
+                        key={featureIndex}
+                        className="flex items-start gap-2"
+                      >
+                        <CheckCircleIcon className="size-4 text-white bg-green-700 rounded-full shrink-0 mt-0.5" />
+
+                        <p className="text-sm text-white">{feature}</p>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
