@@ -202,7 +202,7 @@
         "bookType": "custom",
         "plans": [
           {
-            "type": "Custom Documentation Package",
+            "type": "Start From",
             "price": 1500000,
             "subtitle": "Flexible Photo & Video Coverage",
             "features": [

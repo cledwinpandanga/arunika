@@ -461,7 +461,7 @@ const PricingCard = ({
         <button
           type="button"
           onClick={() => setShowDetails(false)}
-          className="absolute top-4 z-30 right-4 text-xs font-bold md:hidden border px-3 py-1.5 rounded-full border-white text-white"
+          className="absolute top-4 z-50 right-4 text-xs font-bold md:hidden border px-3 py-1.5 rounded-full border-white text-white"
         >
           ✕ Close
         </button>
@@ -473,10 +473,7 @@ const PricingCard = ({
             )}`;
 
             return (
-              <div
-                key={index}
-                className="rounded-2xl p-4 bg-white/5 backdrop-blur-md"
-              >
+              <div key={index} className="rounded-2xl p-4">
                 {/* Tag */}
                 {plan.tag && (
                   <div className="w-fit mb-4 px-3 py-1 text-xs rounded-full bg-amber-500 text-black font-semibold">
