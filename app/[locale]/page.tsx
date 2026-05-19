@@ -284,7 +284,7 @@ export default function Home() {
           target="_blank"
         >
           <Button className="mt-20 w-full bg-black rounded-none hover:ring-none">
-            View PDF
+            {t("viewPdf")}
           </Button>
         </Link>
       </div>

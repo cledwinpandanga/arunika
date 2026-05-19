@@ -22,6 +22,7 @@
   "pricing": {
     "title": "Pricing",
     "button": "Book Now",
+    "viewPdf": "View PDF",
     "items": [
       {
         "title": "Wedding",

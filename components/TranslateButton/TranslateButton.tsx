@@ -23,7 +23,7 @@ export default function TranslateButton({ locale }: TranslateButtonProps) {
   };
 
   const flag = isEnglish
-    ? "https://static.vecteezy.com/system/resources/previews/022/109/084/non_2x/america-flag-round-shape-free-png.png"
+    ? "https://static.vecteezy.com/system/resources/thumbnails/007/910/760/small/united-kingdom-flag-rounded-icon-uk-flag-union-jack-vector.jpg"
     : "https://static.vecteezy.com/system/resources/thumbnails/016/328/946/small/indonesia-flat-rounded-flag-with-transparent-background-free-png.png";
 
   return (
